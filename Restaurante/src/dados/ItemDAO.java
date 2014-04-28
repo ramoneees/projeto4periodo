@@ -2,16 +2,22 @@ package dados;
 
 import java.util.List;
 
-import basicas.Item;
-import DAO.DAOGenerico;
+import javax.persistence.TypedQuery;
 
-public class ItemDAO extends DAOGenerico<Item> implements IItemDAO {
+import basicas.Item;
+
+public class ItemDAO extends DAO.DAOGenerico<Item> implements IItemDao{
 
 	@Override
-	public List<Item> pesquisarFuncionalidadesPorNome(String nome,
+	public List<Item> pesquisarItemsPorTitulo(String nome,
 			TipoPesquisaString tipoPesquisa) {
-		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<Item> tq = this.entityManager.createNamedQuery("Item.findByNome", Item.class);
+		if (tipoPesquisa == TipoPesquisaString.COMECA_COM){
+			tq.setParameter("valor", nome + "%");	
+		} else if (tipoPesquisa == TipoPesquisaString.CONTEM){
+			tq.setParameter("valor", "%" + nome + "%");	
+		}
+		return tq.getResultList();
 	}
 
 }
