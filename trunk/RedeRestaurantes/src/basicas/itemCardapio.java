@@ -7,7 +7,6 @@ public class itemCardapio {
 	private Double preco;
 	private Double peso;
 	private TipoCardapio tipo ;
-	
 	public int getId() {
 		return id;
 	}
