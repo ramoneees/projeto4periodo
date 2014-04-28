@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -20,8 +21,9 @@ public class Restaurante {
 	private String tamanho;
 	private int qtdMaxima;
 	private boolean playground;
-	Endereco endereco;
-	
+	private Endereco endereco;
+	@OneToMany(mappedBy="mesa")
+	private Collection<Mesa> mesas;
 	@ManyToMany
 	private Collection<Item> itens;
 	
