@@ -10,7 +10,7 @@ import basicas.Cliente;
 public class ClienteDao extends DAO.DAOGenerico<Cliente> implements IClienteDAO {
 
 	@Override
-	public List<Cliente> pesquisarFuncionalidadesPorNome(String nome, TipoPesquisaString tipoPesquisa) {
+	public List<Cliente> pesquisarClientePorNome(String nome, TipoPesquisaString tipoPesquisa) {
 		TypedQuery<Cliente> tq = this.entityManager.createNamedQuery("Cliente.findByNome", Cliente.class);
 		if (tipoPesquisa == TipoPesquisaString.COMECA_COM){
 			tq.setParameter("valor", nome + "%");	
