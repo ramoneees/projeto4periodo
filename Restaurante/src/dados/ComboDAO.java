@@ -8,7 +8,7 @@ import DAO.DAOGenerico;
 public class ComboDAO extends DAOGenerico<Combo> implements IComboDAO {
 
 	@Override
-	public List<Combo> pesquisarFuncionalidadesPorNome(String nome,
+	public List<Combo> pesquisarComboPorNome(String nome,
 			TipoPesquisaString tipoPesquisa) {
 		// TODO Auto-generated method stub
 		return null;

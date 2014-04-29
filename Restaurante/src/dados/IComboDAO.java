@@ -7,5 +7,5 @@ import DAO.IDAOGenerico;
 
 public interface IComboDAO extends IDAOGenerico<Combo> {
 
-	public List<Combo> pesquisarFuncionalidadesPorNome(String nome, TipoPesquisaString tipoPesquisa);
+	public List<Combo> pesquisarComboPorNome(String nome, TipoPesquisaString tipoPesquisa);
 }
