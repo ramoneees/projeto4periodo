@@ -4,13 +4,13 @@ import java.util.List;
 
 import javax.persistence.TypedQuery;
 
-import basicas.Item;
+import basicas.ItemCardapio;
 
-public class ItemDAO extends DAO.DAOGenerico<Item> implements IItemDAO{
+public class ItemDAO extends DAO.DAOGenerico<ItemCardapio> implements IItemDAO{
 
 	@Override
-	public List<Item> pesquisarItemsPorTitulo(String nome,TipoPesquisaString tipoPesquisa) {
-		TypedQuery<Item> tq = this.entityManager.createNamedQuery("Item.findByNome", Item.class);
+	public List<ItemCardapio> pesquisarItemsPorTitulo(String nome,TipoPesquisaString tipoPesquisa) {
+		TypedQuery<ItemCardapio> tq = this.entityManager.createNamedQuery("Item.findByNome", ItemCardapio.class);
 		if (tipoPesquisa == TipoPesquisaString.COMECA_COM){
 			tq.setParameter("valor", nome + "%");	
 		} else if (tipoPesquisa == TipoPesquisaString.CONTEM){

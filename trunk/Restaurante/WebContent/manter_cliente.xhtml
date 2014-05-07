@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Gerenciamento de Clientes</title>
+</head>
+<body>
+<h1>Gerenciamento de Clientes</h1>
+
+<h:panelGrid id="painelCliente" border="1" columns="2">
+<f:facet name="header">
+Dados do Cliente
+</f:facet>
+
+
+<h:form>
+
+
+<h:inputText  label="Nome">#{clienteBean.Cliente.nome}</h:inputText><br></br>
+<label>E-mail:</label>
+<h:inputText>#{clienteBean.Cliente.email}</h:inputText><br></br>
+<label>Telefone:</label>
+<h:inputText>#{clienteBean.Cliente.telefone}</h:inputText><br></br>
+<br></br>
+<label>Logradouro:</label>
+<h:inputText>#{clienteBean.Cliente.Endereco.logradouro}</h:inputText><br></br>
+<label>Número:</label>
+<h:inputText>#{clienteBean.Cliente.Endereco.numero}</h:inputText><br></br>
+<label>Complemento:</label>
+<h:inputText>#{clienteBean.Cliente.Endereco.complemento}</h:inputText><br></br>
+<label>Bairro:</label>
+<h:inputText>#{clienteBean.Cliente.Endereco.bairro}</h:inputText><br></br>
+<label>Cidade:</label>
+<h:inputText>#{clienteBean.Cliente.Endereco.cidade}</h:inputText><br></br>
+<br></br>
+<h:commandButton action="#{clienteBean.inserir}" value="Salvar"></h:commandButton>
+</h:form>
+</h:panelGrid>
+
+
+</body>
+</html>
