@@ -16,7 +16,7 @@ public class Combo {
 	private int id;
 	
 	@ManyToMany
-	private Collection<Item> itens;
+	private Collection<ItemCardapio> itens;
 	
 	private float preco;
 	
@@ -32,10 +32,10 @@ public class Combo {
 	}
 	
 	
-	public Collection<Item> getItens() {
+	public Collection<ItemCardapio> getItens() {
 		return itens;
 	}
-	public void setItens(Collection<Item> itens) {
+	public void setItens(Collection<ItemCardapio> itens) {
 		this.itens = itens;
 	}
 	public float getPreco() {

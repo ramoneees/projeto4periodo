@@ -3,9 +3,9 @@ package dados;
 import java.util.List;
 
 import DAO.IDAOGenerico;
-import basicas.Item;
+import basicas.ItemCardapio;
 
-public interface IItemDAO extends IDAOGenerico<Item>{
+public interface IItemDAO extends IDAOGenerico<ItemCardapio>{
 
-	public List<Item> pesquisarItemsPorTitulo(String nome, TipoPesquisaString tipoPesquisa);
+	public List<ItemCardapio> pesquisarItemsPorTitulo(String nome, TipoPesquisaString tipoPesquisa);
 }

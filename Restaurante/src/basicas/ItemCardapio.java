@@ -12,7 +12,7 @@ import javax.persistence.ManyToMany;
 
 
 @Entity
-public class Item {
+public class ItemCardapio {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;

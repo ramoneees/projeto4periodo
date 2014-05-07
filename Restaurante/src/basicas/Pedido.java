@@ -16,7 +16,7 @@ public class Pedido {
 	private int id;
 	
 	@ManyToMany
-	private Collection<Item> itens;
+	private Collection<ItemCardapio> itens;
 	
 	@ManyToMany
 	private Collection<Combo> combos;
@@ -40,11 +40,11 @@ public class Pedido {
 		this.id = id;
 	}
 
-	public Collection<Item> getItens() {
+	public Collection<ItemCardapio> getItens() {
 		return itens;
 	}
 
-	public void setItens(Collection<Item> itens) {
+	public void setItens(Collection<ItemCardapio> itens) {
 		this.itens = itens;
 	}
 

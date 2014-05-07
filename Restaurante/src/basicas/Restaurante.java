@@ -25,7 +25,7 @@ public class Restaurante {
 	@OneToMany(mappedBy="mesa")
 	private Collection<Mesa> mesas;
 	@ManyToMany
-	private Collection<Item> itens;
+	private Collection<ItemCardapio> itens;
 	
 	public int getId() {
 		return id;
@@ -42,10 +42,10 @@ public class Restaurante {
 	public String getFone() {
 		return fone;
 	}
-	public Collection<Item> getItens() {
+	public Collection<ItemCardapio> getItens() {
 		return itens;
 	}
-	public void setItens(Collection<Item> itens) {
+	public void setItens(Collection<ItemCardapio> itens) {
 		this.itens = itens;
 	}
 	public void setFone(String fone) {
