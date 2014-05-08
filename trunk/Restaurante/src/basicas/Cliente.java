@@ -19,6 +19,10 @@ public class Cliente {
 	private String fone;
 	private Endereco endereco;
 	
+	public Cliente(){
+		this.endereco =  new Endereco();
+		
+	}
 	@OneToMany(mappedBy = "cliente")
 	private Collection<Pedido> pedidos;
 
