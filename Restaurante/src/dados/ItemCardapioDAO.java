@@ -6,7 +6,7 @@ import javax.persistence.TypedQuery;
 
 import basicas.ItemCardapio;
 
-public class ItemDAO extends DAO.DAOGenerico<ItemCardapio> implements IItemDAO{
+public class ItemCardapioDAO extends DAO.DAOGenerico<ItemCardapio> implements IItemCardapioDAO{
 
 	@Override
 	public List<ItemCardapio> pesquisarItemsPorTitulo(String nome,TipoPesquisaString tipoPesquisa) {
