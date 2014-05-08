@@ -12,7 +12,7 @@ public class ClienteBean {
 
 	private IFcahada fachada = new Fachada();
 	private Cliente cliente = new Cliente();
-
+	
 	
 	public String inserir() throws Exception{
 		fachada.inserir(cliente);
