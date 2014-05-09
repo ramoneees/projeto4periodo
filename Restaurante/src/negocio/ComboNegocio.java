@@ -1,5 +1,7 @@
 package negocio;
 
+import java.util.List;
+
 import basicas.Combo;
 import dados.ComboDAO;
 import dados.IComboDAO;
@@ -43,5 +45,13 @@ public class ComboNegocio {
 		dao.remover(combo);
 	}
 	
+	public List<Combo> consultarTodos(){
+		
+		return dao.consultarTodos();
+	}
+	public Combo consultarPorId(int id){
+		
+		return dao.consultarPorId(id);
+	}
 	
 }

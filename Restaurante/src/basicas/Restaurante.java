@@ -22,7 +22,12 @@ public class Restaurante {
 	private int qtdMaxima;
 	private boolean playground;
 	private Endereco endereco;
-	@OneToMany(mappedBy="mesa")
+	
+		public Restaurante(){
+			this.endereco = new Endereco();
+		}
+	
+	@OneToMany(mappedBy="restaurante")
 	private Collection<Mesa> mesas;
 	@ManyToMany
 	private Collection<ItemCardapio> itens;

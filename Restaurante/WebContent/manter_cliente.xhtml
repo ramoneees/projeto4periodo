@@ -13,7 +13,7 @@ xmlns:p="http://primefaces.org/ui">
 <h:body>
 <h1>Gerenciamento de Clientes</h1>
 
-<h:panelGrid id="painelCliente" border="1" columns="2">
+<p:panelGrid id="painelCliente" border="1" columns="2">
 <f:facet name="header">
 Dados do Cliente
 </f:facet>
@@ -21,28 +21,49 @@ Dados do Cliente
 
 <h:form>
 
-
-<h:inputText  label="Nome">#{clienteBean.Cliente.nome}</h:inputText><br></br>
+<label>Nome:</label>
+<p:inputText label="" value="#{clienteBean.cliente.nome}"/> <br></br>
 <label>E-mail:</label>
-<h:inputText>#{clienteBean.Cliente.email}</h:inputText><br></br>
+<p:inputText value="#{clienteBean.cliente.email}" required="true"/><br></br>
 <label>Telefone:</label>
-<h:inputText>#{clienteBean.Cliente.telefone}</h:inputText><br></br>
+<p:inputText value="#{clienteBean.cliente.fone}"/><br></br>
 <br></br>
 <label>Logradouro:</label>
-<h:inputText>#{clienteBean.Cliente.Endereco.logradouro}</h:inputText><br></br>
+<p:inputText value="#{clienteBean.cliente.endereco.logradouro}"/><br></br>
 <label>Número:</label>
-<h:inputText>#{clienteBean.Cliente.Endereco.numero}</h:inputText><br></br>
+<p:inputText value="#{clienteBean.cliente.endereco.numero}" /><br></br>
 <label>Complemento:</label>
-<h:inputText>#{clienteBean.Cliente.Endereco.complemento}</h:inputText><br></br>
+<p:inputText value="#{clienteBean.cliente.endereco.complemento}"/><br></br>
 <label>Bairro:</label>
-<h:inputText>#{clienteBean.Cliente.Endereco.bairro}</h:inputText><br></br>
+<p:inputText value="#{clienteBean.cliente.endereco.bairro}"/><br></br>
 <label>Cidade:</label>
-<h:inputText>#{clienteBean.Cliente.Endereco.cidade}</h:inputText><br></br>
+<p:inputText value="#{clienteBean.cliente.endereco.cidade}"/><br></br>
 <br></br>
-<h:commandButton action="#{clienteBean.inserir}" value="Salvar"></h:commandButton>
+<p:commandButton action="#{clienteBean.salvar}" value="Salvar"/>
 </h:form>
-</h:panelGrid>
+</p:panelGrid>
 
+
+<h:form>
+    <p:dataTable var="cli" value="#{clienteBean.lista}">
+         <p:column headerText="Id">
+           <p:commandLink action="#{clienteBean.exibir(cli)}" value="#{cli.id}"/>
+        </p:column>
+        
+        <p:column headerText="Nome">
+            <p:commandLink action="#{clienteBean.exibir(cli)}" value="#{cli.nome}" />
+        </p:column>
+ 
+        <p:column headerText="e-mail">
+            <h:outputText value="#{cli.email}" />
+        </p:column>
+ 
+        <p:column headerText="Telefone">
+            <h:outputText value="#{cli.fone}" />
+        </p:column>
+ 
+       </p:dataTable>
+</h:form>
 
 
 </h:body>

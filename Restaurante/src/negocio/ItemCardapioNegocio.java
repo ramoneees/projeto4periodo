@@ -1,5 +1,7 @@
 package negocio;
 
+import java.util.List;
+
 import basicas.ItemCardapio;
 import dados.IItemCardapioDAO;
 import dados.ItemCardapioDAO;
@@ -23,4 +25,13 @@ public class ItemCardapioNegocio {
 		itemdao.remover(item);
 	}
 
+	public List<ItemCardapio> consultarTodos(){
+		
+		return itemdao.consultarTodos();
+	}
+	
+	public ItemCardapio consultarPorId(int id){
+		
+		return itemdao.consultarPorId(id);
+	}
 }

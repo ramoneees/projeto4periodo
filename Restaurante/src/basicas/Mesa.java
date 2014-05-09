@@ -13,6 +13,7 @@ public class Mesa {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private int qtd;
+	
 	@ManyToOne
 	private Restaurante restaurante;
 	

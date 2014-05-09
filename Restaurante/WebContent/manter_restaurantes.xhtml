@@ -4,11 +4,82 @@
 xmlns:h="http://java.sun.com/jsf/html"
 xmlns:f="http://java.sun.com/jsf/core"
 xmlns:p="http://primefaces.org/ui">
-<head>
+<h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
-</head>
-<body>
-<h1>Em construção</h1>
-</body>
+<title>Gerenciamento de Restaurante</title>
+
+</h:head>
+
+<h:body>
+<h1>Gerenciamento de Restaurante</h1>
+
+<h:panelGrid id="painelRestaurante" border="1" columns="2">
+<f:facet name="header">
+Dados do Restaurante
+</f:facet>
+
+<h:form>
+
+<label>Nome:</label>
+<p:inputText value="#{restauranteBean.restaurante.nome}"></p:inputText><br></br>
+
+<label>Telefone:</label>
+<p:inputText value="#{restauranteBean.restaurante.fone}"></p:inputText><br></br>
+<br></br>
+
+<label>Qtd Máx. de Pessoas:</label>
+<p:inputText value="#{restauranteBean.restaurante.qtdMaxima}"></p:inputText><br></br>
+<br></br>
+
+<label>Possui Playground?</label>
+<p:selectOneMenu value="#{restauranteBean.restaurante.playground}">
+	<f:selectItem itemValue="true" itemLabel="Sim" />
+	<f:selectItem itemValue="false" itemLabel="Não" />
+</p:selectOneMenu>
+<br></br>
+
+<label>Logradouro:</label>
+<p:inputText value="#{restauranteBean.restaurante.endereco.logradouro}"/><br></br>
+
+<label>Número:</label>
+<p:inputText value="#{restauranteBean.restaurante.endereco.numero}" /><br></br>
+
+<label>Complemento:</label>
+<p:inputText value="#{restauranteBean.restaurante.endereco.complemento}"/><br></br>
+
+<label>Bairro:</label>
+<p:inputText value="#{restauranteBean.restaurante.endereco.bairro}"/><br></br>
+
+<label>Cidade:</label>
+<p:inputText value="#{restauranteBean.restaurante.endereco.cidade}"/><br></br>
+<br></br>
+
+<p>
+	#{restauranteBean.mensagem}
+</p>
+<p:commandButton action="#{restauranteBean.inserir}" value="Salvar"></p:commandButton>
+</h:form>
+</p:panelGrid>
+<h:form>
+    <p:dataTable var="rest" value="#{restauranteBean.lista}">
+         <p:column headerText="Id">
+           <p:commandLink action="#{restauranteBean.exibir(rest)}" value="#{rest.id}"/>
+        </p:column>
+        
+        <p:column headerText="Nome">
+            <p:commandLink action="#{restauranteBean.exibir(rest)}" value="#{rest.nome}" />
+        </p:column>
+ 
+        <p:column headerText="Qtd.Max de clientes">
+            <h:outputText value="#{rest.qtdMaximo}" />
+        </p:column>
+ 
+        <p:column headerText="Telefone">
+            <h:outputText value="#{rest.fone}" />
+        </p:column>
+ 
+       </p:dataTable>
+</h:form>
+
+</h:body>
 </html>
