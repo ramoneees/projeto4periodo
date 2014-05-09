@@ -1,5 +1,7 @@
 package negocio;
 
+import java.util.List;
+
 import basicas.Mesa;
 import dados.IMesaDAO;
 import dados.MesaDAO;
@@ -28,5 +30,20 @@ public class MesaNegocio {
 		}
 		dao.alterar(mesa);
 		
+	}
+	
+	public void remover (Mesa mesa){
+		
+		dao.remover(mesa);
+	}
+	
+	public List<Mesa> consultarTodos(){
+		
+		return dao.consultarTodos();
+	}
+	
+	public Mesa consultarporId(int id){
+		
+		return dao.consultarPorId(id);
 	}
 }

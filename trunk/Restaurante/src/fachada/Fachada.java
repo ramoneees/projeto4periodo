@@ -3,6 +3,10 @@ package fachada;
 import java.util.List;
 
 import negocio.ClienteNegocio;
+import negocio.ComboNegocio;
+import negocio.ItemCardapioNegocio;
+import negocio.MesaNegocio;
+import negocio.RestauranteNegocio;
 import basicas.Cliente;
 import basicas.Combo;
 import basicas.ItemCardapio;
@@ -10,9 +14,14 @@ import basicas.Mesa;
 import basicas.Pedido;
 import basicas.Restaurante;
 
-public class Fachada implements IFcahada {
+public class Fachada implements IFachada {
 
 	ClienteNegocio clienteNegocio = new ClienteNegocio();
+	MesaNegocio mesaNegocio = new MesaNegocio();
+	ItemCardapioNegocio itemNegocio = new ItemCardapioNegocio();
+	ComboNegocio comboNegocio = new ComboNegocio();
+	
+	RestauranteNegocio restNegocio = new RestauranteNegocio();
 	@Override
 	public void inserir(Cliente cliente) throws Exception {
 		clienteNegocio.inserir(cliente);
@@ -27,140 +36,142 @@ public class Fachada implements IFcahada {
 
 	@Override
 	public void remover(Cliente cliente) throws Exception {
-		// TODO Auto-generated method stub
+		clienteNegocio.remover(cliente);
 		
 	}
 
 	@Override
 	public Cliente consultarClientePorId(Integer id) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return clienteNegocio.consultarPorId(id);
 	}
 
 	@Override
 	public List<Cliente> consultarTodosCliente() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return clienteNegocio.consultarTodos();
 	}
 
 	@Override
 	public void inserir(Mesa mesa) throws Exception {
-		// TODO Auto-generated method stub
+		
+		mesaNegocio.inserir(mesa);
 		
 	}
 
 	@Override
 	public void alterar(Mesa mesa) throws Exception {
-		// TODO Auto-generated method stub
+		mesaNegocio.alterar(mesa);
 		
 	}
 
 	@Override
 	public void remover(Mesa mesa) throws Exception {
-		// TODO Auto-generated method stub
+		mesaNegocio.inserir(mesa);
 		
 	}
 
 	@Override
 	public Mesa consultarPorId(Integer id) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return mesaNegocio.consultarporId(id);
 	}
 
 	@Override
 	public List<Mesa> consultarTodosMesa() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return  mesaNegocio.consultarTodos();
 	}
 
 	@Override
 	public void inserir(Restaurante restaurante) throws Exception {
-		// TODO Auto-generated method stub
+		restNegocio.inserir(restaurante);
 		
 	}
 
 	@Override
 	public void alterar(Restaurante restaurante) throws Exception {
-		// TODO Auto-generated method stub
+		restNegocio.alterar(restaurante);
 		
 	}
 
 	@Override
 	public void remover(Restaurante restaurante) throws Exception {
-		// TODO Auto-generated method stub
+		
+		restNegocio.remover(restaurante);
 		
 	}
 
 	@Override
 	public Restaurante consultarRestaurantePorId(Integer id) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return restNegocio.consultarPorId(id);
 	}
 
 	@Override
 	public List<Restaurante> consultarTodosRestaurante() throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return restNegocio.consultarTodos();
 	}
 
 	@Override
 	public void inserir(ItemCardapio item) throws Exception {
-		// TODO Auto-generated method stub
+		itemNegocio.inserir(item);
 		
 	}
 
 	@Override
 	public void alterar(ItemCardapio item) throws Exception {
-		// TODO Auto-generated method stub
+		itemNegocio.alterar(item);
 		
 	}
 
 	@Override
 	public void remover(ItemCardapio item) throws Exception {
-		// TODO Auto-generated method stub
+		itemNegocio.remover(item);
 		
 	}
 
 	@Override
 	public ItemCardapio consultarItemPorId(Integer id) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return itemNegocio.consultarPorId(id);
 	}
 
 	@Override
 	public List<ItemCardapio> consultarTodosItem() throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return itemNegocio.consultarTodos();
 	}
 
 	@Override
 	public void inserir(Combo combo) throws Exception {
-		// TODO Auto-generated method stub
+		comboNegocio.inserir(combo);
 		
 	}
 
 	@Override
 	public void alterar(Combo combo) throws Exception {
-		// TODO Auto-generated method stub
+		comboNegocio.alterar(combo);
 		
 	}
 
 	@Override
 	public void remover(Combo combo) throws Exception {
-		// TODO Auto-generated method stub
+		comboNegocio.remover(combo);
+		
 		
 	}
 
 	@Override
-	public ItemCardapio consultarComboPorId(Integer id) throws Exception {
+	public Combo consultarComboPorId(Integer id) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return comboNegocio.consultarPorId(id);
 	}
 
 	@Override
-	public List<ItemCardapio> consultarTodosCombo() throws Exception {
+	public List<Combo> consultarTodosCombo() throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return comboNegocio.consultarTodos();
 	}
 
 	@Override

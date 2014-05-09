@@ -1,5 +1,7 @@
 package negocio;
 
+import java.util.List;
+
 import dados.ClienteDao;
 import dados.IClienteDAO;
 import basicas.Cliente;
@@ -48,5 +50,21 @@ public class ClienteNegocio {
 		}
 		
 		clienteDao.alterar(cliente);
+	}
+	
+	public void remover(Cliente cliente){
+		
+		clienteDao.remover(cliente);
+	}
+	
+	public List<Cliente> consultarTodos(){
+		return clienteDao.consultarTodos();
+		
+	}
+	
+	public Cliente consultarPorId(int id) throws Exception{
+		
+		return clienteDao.consultarPorId(id);
+		
 	}
 }
