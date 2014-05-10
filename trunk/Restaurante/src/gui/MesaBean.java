@@ -5,6 +5,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 
 import basicas.Mesa;
+import basicas.Restaurante;
 import fachada.Fachada;
 import fachada.IFachada;
 
@@ -17,6 +18,32 @@ public class MesaBean {
 	private Mesa mesa = new Mesa();
 	private List<Mesa> lista;
 	private String mensagem;
+	private List<Restaurante> listaRest;
+	private Restaurante restaurante = new Restaurante();
+
+	public Restaurante getRestaurante() {
+		return restaurante;
+	}
+
+	public void setRestaurante(Restaurante restaurante) {
+		this.restaurante = restaurante;
+	}
+
+	public List<Restaurante> getListaRest() {
+		try {
+			 listaRest = fachada.consultarTodosRestaurante();
+			 
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return listaRest;
+		
+	}
+
+	public void setListaRest(List<Restaurante> listaRest) {
+		this.listaRest = listaRest;
+	}
 
 	public String getMensagem() {
 		return mensagem;
@@ -50,10 +77,10 @@ public class MesaBean {
 		this.lista = lista;
 	}
 
-	public void salvar() {
+	public String salvar() {
 
 		try {
-
+			System.out.println(mesa.getId());
 			if (mesa.getId() == 0) {
 				fachada.inserir(mesa);
 			} else {
@@ -64,7 +91,9 @@ public class MesaBean {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			mensagem = e.getMessage();
+			e.printStackTrace();
 		}
+		return null;
 	}
 
 }

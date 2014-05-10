@@ -1,6 +1,5 @@
 package gui;
 
-
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -15,21 +14,21 @@ public class ClienteBean {
 	private IFachada fachada = new Fachada();
 	private Cliente cliente = new Cliente();
 	private List<Cliente> lista;
-	
-	public ClienteBean(){
+
+	public ClienteBean() {
 		this.lista = null;
 	}
-	
+
 	public List<Cliente> getLista() {
 		try {
 			if (lista == null) {
 				lista = fachada.consultarTodosCliente();
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return lista;
 	}
 
@@ -37,7 +36,6 @@ public class ClienteBean {
 		this.lista = lista;
 	}
 
-	
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -46,30 +44,41 @@ public class ClienteBean {
 		this.cliente = cliente;
 	}
 
-	public String salvar() throws Exception{
-		
+	public String salvar() throws Exception {
+
 		System.out.println(cliente.getId());
 		if (cliente.getId() == 0) {
-			fachada.inserir(cliente);	
-		} else{
-			
+			fachada.inserir(cliente);
+		} else {
+
 			fachada.alterar(cliente);
+			cliente = new Cliente();
 		}
-		
-		return null;
+
+		return "manter_cliente.xhtml?faces-redirect=true";
 	}
-	
-	public String alterarCliente() throws Exception{
+
+	public String alterarCliente() throws Exception {
 		fachada.alterar(cliente);
-		return null;
+		return "manter_cliente.xhtml?faces-redirect=true";
 	}
-	
-	public String exibir(Cliente c){
+
+	public String exibir(Cliente c) {
 		System.out.println(c.getNome());
-		this.cliente = c;
-		return null;
-		
+		setCliente(c);
+		return "manter_cliente.xhtml?faces-redirect=true";
+
 	}
-	
-	
+
+	public String remover(Cliente c) {
+
+		try {
+			fachada.remover(c);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

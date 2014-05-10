@@ -59,7 +59,7 @@ Dados do Restaurante
 </p>
 <p:commandButton action="#{restauranteBean.inserir}" value="Salvar"></p:commandButton>
 </h:form>
-</p:panelGrid>
+</h:panelGrid>
 <h:form>
     <p:dataTable var="rest" value="#{restauranteBean.lista}">
          <p:column headerText="Id">
@@ -71,7 +71,7 @@ Dados do Restaurante
         </p:column>
  
         <p:column headerText="Qtd.Max de clientes">
-            <h:outputText value="#{rest.qtdMaximo}" />
+            <h:outputText value="#{rest.qtdMaxima}" />
         </p:column>
  
         <p:column headerText="Telefone">

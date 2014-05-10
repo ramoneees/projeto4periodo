@@ -11,16 +11,19 @@
 
 <h:body>
 
-<p:panelGrid id="formMesa">
+
 
 <h:form>
-<p:inputText value="mesaBean.mesa.qtd" label="QtdMax" />
+<h:inputHidden value="#{mesaBean.mesa.id}" /><br/><br/>
+<label>N° de lugares na mesa:</label>
+<p:inputText value="#{mesaBean.mesa.qtd}" label="QtdMax" /><br/><br/>
+<p:selectOneMenu  value="#{mesaBean.restaurante}">
+	<f:selectItems var="rest" value="#{mesaBean.listaRest}" itemValue="#{rest.id}" itemLabel="#{rest.nome}"/>
+</p:selectOneMenu><br/><br/>
+
+<p:commandButton action="#{mesaBean.salvar}" value="Salvar"/>
 
 </h:form>
-
-</p:panelGrid>
-
-
 
 
 </h:body>
