@@ -21,6 +21,7 @@ Dados do Cliente
 
 <h:form>
 
+<h:inputHidden label="" value="#{clienteBean.cliente.id}"/> <br></br>
 <label>Nome:</label>
 <p:inputText label="" value="#{clienteBean.cliente.nome}"/> <br></br>
 <label>E-mail:</label>
@@ -47,11 +48,11 @@ Dados do Cliente
 <h:form>
     <p:dataTable var="cli" value="#{clienteBean.lista}">
          <p:column headerText="Id">
-           <p:commandLink action="#{clienteBean.exibir(cli)}" value="#{cli.id}"/>
+           <h:outputText value="#{cli.id}"/>
         </p:column>
         
         <p:column headerText="Nome">
-            <p:commandLink action="#{clienteBean.exibir(cli)}" value="#{cli.nome}" />
+            <p:commandLink action="#{clienteBean.exibir(cli)}" value="#{cli.nome}"  ajax="false"/>
         </p:column>
  
         <p:column headerText="e-mail">
@@ -61,7 +62,10 @@ Dados do Cliente
         <p:column headerText="Telefone">
             <h:outputText value="#{cli.fone}" />
         </p:column>
- 
+ <p:column headerText="Excluir">
+ <p:commandLink action="#{clienteBean.remover(cli)}"><img src="imagens/lixo.png" /></p:commandLink>
+
+ </p:column>
        </p:dataTable>
 </h:form>
 
