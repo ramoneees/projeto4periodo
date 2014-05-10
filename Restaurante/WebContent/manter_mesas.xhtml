@@ -29,12 +29,12 @@
 <h:form>
 		<p:dataTable var="mesa" value="#{mesaBean.lista}">
 			<p:column headerText="Id">
-				<p:commandLink action="#{mesaBean.exibir(rest)}"
+				<p:commandLink action="#{mesaBean.exibir(mesa)}"
 					value="#{mesa.id}" />
 			</p:column>
 
 			<p:column headerText="Nome">
-				<p:commandLink action="#{mesaBean.exibir(rest)}"
+				<p:commandLink action="#{mesaBean.exibir(mesa)}"
 					value="#{mesa.nome}" />
 			</p:column>
 
@@ -42,11 +42,11 @@
 				<h:outputText value="#{mesa.qtdMaxima}" />
 			</p:column>
 
-			<p:column headerText="Telefone">
-				<h:outputText value="#{mesa.fone}" />
+			<p:column headerText="Restaurante">
+				<h:outputText value="#{mesa.restaurante.nome}" />
 			</p:column>
 			<p:column headerText="Excluir">
-				<p:commandLink action="#{mesaBean.remover(cli)}">
+				<p:commandLink action="#{mesaBean.remover(mesa)}">
 					<img src="imagens/lixo.png" />
 				</p:commandLink>
 			</p:column>
