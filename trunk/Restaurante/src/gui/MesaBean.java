@@ -81,7 +81,11 @@ public class MesaBean {
 
 		try {
 			System.out.println(mesa.getId());
+			mesa.setRestaurante(restaurante);
+			System.out.println(mesa.getId());
 			if (mesa.getId() == 0) {
+			
+				
 				fachada.inserir(mesa);
 			} else {
 

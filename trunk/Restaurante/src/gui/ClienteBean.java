@@ -23,7 +23,6 @@ public class ClienteBean {
 		try {
 
 			lista = fachada.consultarTodosCliente();
-			
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -44,25 +43,32 @@ public class ClienteBean {
 		this.cliente = cliente;
 	}
 
-	public String salvar() throws Exception {
+	public String salvar() {
 
 		System.out.println(cliente.getId());
-		if (cliente.getId() == 0) {
-			fachada.inserir(cliente);
-		} else {
+		try {
+			if (cliente.getId() == 0) {
 
-			fachada.alterar(cliente);
-			cliente = new Cliente();
+				fachada.inserir(cliente);
+			} else {
+
+				fachada.alterar(cliente);
+				cliente = new Cliente();
+
+			}
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		return "manter_cliente.xhtml?faces-redirect=true";
 	}
 
-	
 	public String exibir(Cliente c) {
 		System.out.println(c.getNome());
 		this.cliente = c;
-		return "manter_cliente.xhtml?faces-redirect=true";
+		return null;
 
 	}
 

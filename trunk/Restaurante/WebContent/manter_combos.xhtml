@@ -11,6 +11,54 @@ xmlns:p="http://primefaces.org/ui">
 </h:head>
 
 <h:body>
+<p:panelGrid id="painelRestaurante" border="1" columns="1">
+		<f:facet name="header">
+Dados dos combos
+</f:facet>
+<h:inputHidden value="#{comboBean.combo.id}" />
+<p:selectOneMenu  value="#{comboBean.item1}">
+	<f:selectItems var="listaIntens" value="#{comboBean.listaItens}" itemValue="#{listaIntens.id}" itemLabel="#{listaIntens.titulo}"/>
+</p:selectOneMenu>
+
+<p:selectOneMenu  value="#{comboBean.item2}">
+	<f:selectItems var="listaIntens" value="#{comboBean.listaItens}" itemValue="#{listaIntens.id}" itemLabel="#{listaIntens.titulo}"/>
+</p:selectOneMenu>
+
+<p:selectOneMenu  value="#{comboBean.item3}">
+	<f:selectItems var="listaIntens" value="#{comboBean.listaItens}" itemValue="#{listaIntens.id}" itemLabel="#{listaIntens.titulo}"/>
+</p:selectOneMenu>
+
+<label>Preço:</label>
+<p:inputText value="#{comboBean.combo.preco}" />
+
+<p:commandButton action="#{comboBean.salvar}" value="Salvar" />
+
+</p:panelGrid>
+
+<h:form>
+    <p:dataTable var="combo" value="#{comboBean.lista}">
+         <p:column headerText="Id">
+            <p:commandLink action="#{comboBean.exibir(combo)}" value="#{combo.id}"  ajax="false"/>
+           
+        </p:column>
+        
+        <p:column headerText="Item1">
+           <h:outputText value="#{combo.item1.titulo}"/>
+        </p:column>
+ 
+        <p:column headerText="Item2">
+            <h:outputText value="#{combo.item2.titulo}" />
+        </p:column>
+ 
+        <p:column headerText="Item3">
+            <h:outputText value="#{combo.item3.titulo}" />
+        </p:column>
+ <p:column headerText="Excluir">
+ <p:commandLink action="#{comboBean.remover(combo)}"><img src="imagens/lixo.png" /></p:commandLink>
+
+ </p:column>
+       </p:dataTable>
+</h:form>
 
 
 
