@@ -14,14 +14,16 @@
 
 
 <h:form>
+<h:messages></h:messages>
 <h:inputHidden value="#{mesaBean.mesa.id}" /><br/><br/>
 <label>N° de lugares na mesa:</label>
 <p:inputText value="#{mesaBean.mesa.qtd}" label="QtdMax" /><br/><br/>
-<p:selectOneMenu  value="#{mesaBean.restaurante}">
+<p:selectOneMenu  value="#{mesaBean.restauranteId}">
+	<f:selectItem noSelectionOption="true" itemLabel="Selecione um restaurante"></f:selectItem>
 	<f:selectItems var="rest" value="#{mesaBean.listaRest}" itemValue="#{rest.id}" itemLabel="#{rest.nome}"/>
-</p:selectOneMenu><br/><br/>
+</p:selectOneMenu>
 
-<p:commandButton action="#{mesaBean.salvar}" value="Salvar"/>
+<p:commandButton action="#{mesaBean.salvarMesa}" value="Salvar" ajax="false"/>
 
 </h:form>
 
@@ -33,21 +35,19 @@
 					value="#{mesa.id}" />
 			</p:column>
 
-			<p:column headerText="Nome">
-				<p:commandLink action="#{mesaBean.exibir(mesa)}"
-					value="#{mesa.nome}" />
-			</p:column>
-
+			
 			<p:column headerText="Qtd.Max de clientes">
-				<h:outputText value="#{mesa.qtdMaxima}" />
+				<h:outputText value="#{mesa.qtd}" />
 			</p:column>
 
 			<p:column headerText="Restaurante">
-				<h:outputText value="#{mesa.restaurante.nome}" />
+				<p:commandLink action="#{mesaBean.exibir(mesa)}"
+					value="#{mesa.restaurante.nome}" />
 			</p:column>
+
 			<p:column headerText="Excluir">
-				<p:commandLink action="#{mesaBean.remover(mesa)}">
-					<img src="imagens/lixo.png" />
+				<p:commandLink action="#{mesaBean.remover(mesa)}" ajax="false">
+					<img src="imagens/lixo.png"  />
 				</p:commandLink>
 			</p:column>
 

@@ -66,7 +66,7 @@ public class Fachada implements IFachada {
 
 	@Override
 	public void remover(Mesa mesa) throws Exception {
-		mesaNegocio.inserir(mesa);
+		mesaNegocio.remover(mesa);
 		
 	}
 

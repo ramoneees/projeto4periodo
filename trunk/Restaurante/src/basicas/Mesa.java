@@ -17,6 +17,10 @@ public class Mesa {
 	@ManyToOne
 	private Restaurante restaurante;
 	
+	public Mesa(){
+		
+		this.restaurante = new Restaurante();
+	}
 	
 	public int getId() {
 		return id;
