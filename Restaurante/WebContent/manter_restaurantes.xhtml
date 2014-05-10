@@ -77,7 +77,7 @@ Dados do Restaurante
 
 			<p:column headerText="Nome">
 				<p:commandLink action="#{restauranteBean.exibir(rest)}"
-					value="#{rest.nome}" />
+					value="#{rest.nome}" ajax="false" />
 			</p:column>
 
 			<p:column headerText="Qtd.Max de clientes">

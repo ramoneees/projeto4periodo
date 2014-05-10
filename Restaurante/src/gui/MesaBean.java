@@ -20,6 +20,7 @@ public class MesaBean {
 	private String mensagem;
 	private List<Restaurante> listaRest;
 	private Restaurante restaurante = new Restaurante();
+	private Integer restauranteId;
 
 	public Restaurante getRestaurante() {
 		return restaurante;
@@ -77,11 +78,11 @@ public class MesaBean {
 		this.lista = lista;
 	}
 
-	public String salvar() {
+	public String salvarMesa() {
 
 		try {
 			System.out.println(mesa.getId());
-			mesa.setRestaurante(restaurante);
+			mesa.setRestaurante(fachada.consultarRestaurantePorId(getRestauranteId()));
 			System.out.println(mesa.getId());
 			if (mesa.getId() == 0) {
 			
@@ -97,7 +98,29 @@ public class MesaBean {
 			mensagem = e.getMessage();
 			e.printStackTrace();
 		}
-		return null;
+		return "manter_mesas.xhtml?faces-redirect=true";
 	}
 
+	public Integer getRestauranteId() {
+		return restauranteId;
+	}
+
+	public void setRestauranteId(Integer restauranteId) {
+		this.restauranteId = restauranteId;
+	}
+	public void exibir(Mesa m){
+		
+		System.out.println(m.getRestaurante().getNome());
+		this.mesa = m;
+	}
+
+	public String remover(Mesa m){
+		
+		try {
+			fachada.remover(m);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} return "manter_mesas.xhtml?faces-redirect=true";
+	}
 }
