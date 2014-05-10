@@ -1,85 +1,101 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:h="http://java.sun.com/jsf/html"
-xmlns:f="http://java.sun.com/jsf/core"
-xmlns:p="http://primefaces.org/ui">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Gerenciamento de Restaurante</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Gerenciamento de Restaurante</title>
 
 </h:head>
 
 <h:body>
-<h1>Gerenciamento de Restaurante</h1>
+	<h1>Gerenciamento de Restaurante</h1>
 
-<h:panelGrid id="painelRestaurante" border="1" columns="2">
-<f:facet name="header">
+	<h:panelGrid id="painelRestaurante" border="1" columns="2">
+		<f:facet name="header">
 Dados do Restaurante
 </f:facet>
 
-<h:form>
+		<h:form>
+			<h:inputHidden value="#{restauranteBean.restaurante.id}" />
+			<label>Nome:</label>
+			<p:inputText value="#{restauranteBean.restaurante.nome}"></p:inputText>
+			<br></br>
 
-<label>Nome:</label>
-<p:inputText value="#{restauranteBean.restaurante.nome}"></p:inputText><br></br>
+			<label>Telefone:</label>
+			<p:inputText value="#{restauranteBean.restaurante.fone}"></p:inputText>
+			<br></br>
+			<br></br>
 
-<label>Telefone:</label>
-<p:inputText value="#{restauranteBean.restaurante.fone}"></p:inputText><br></br>
-<br></br>
+			<label>Qtd Máx. de Pessoas:</label>
+			<p:inputText value="#{restauranteBean.restaurante.qtdMaxima}"></p:inputText>
+			<br></br>
+			<br></br>
 
-<label>Qtd Máx. de Pessoas:</label>
-<p:inputText value="#{restauranteBean.restaurante.qtdMaxima}"></p:inputText><br></br>
-<br></br>
+			<label>Possui Playground?</label>
+			<p:selectOneMenu value="#{restauranteBean.restaurante.playground}">
+				<f:selectItem itemValue="true" itemLabel="Sim" />
+				<f:selectItem itemValue="false" itemLabel="Não" />
+			</p:selectOneMenu>
+			<br></br>
 
-<label>Possui Playground?</label>
-<p:selectOneMenu value="#{restauranteBean.restaurante.playground}">
-	<f:selectItem itemValue="true" itemLabel="Sim" />
-	<f:selectItem itemValue="false" itemLabel="Não" />
-</p:selectOneMenu>
-<br></br>
+			<label>Logradouro:</label>
+			<p:inputText
+				value="#{restauranteBean.restaurante.endereco.logradouro}" />
+			<br></br>
 
-<label>Logradouro:</label>
-<p:inputText value="#{restauranteBean.restaurante.endereco.logradouro}"/><br></br>
+			<label>Número:</label>
+			<p:inputText value="#{restauranteBean.restaurante.endereco.numero}" />
+			<br></br>
 
-<label>Número:</label>
-<p:inputText value="#{restauranteBean.restaurante.endereco.numero}" /><br></br>
+			<label>Complemento:</label>
+			<p:inputText
+				value="#{restauranteBean.restaurante.endereco.complemento}" />
+			<br></br>
 
-<label>Complemento:</label>
-<p:inputText value="#{restauranteBean.restaurante.endereco.complemento}"/><br></br>
+			<label>Bairro:</label>
+			<p:inputText value="#{restauranteBean.restaurante.endereco.bairro}" />
+			<br></br>
 
-<label>Bairro:</label>
-<p:inputText value="#{restauranteBean.restaurante.endereco.bairro}"/><br></br>
+			<label>Cidade:</label>
+			<p:inputText value="#{restauranteBean.restaurante.endereco.cidade}" />
+			<br></br>
+			<br></br>
 
-<label>Cidade:</label>
-<p:inputText value="#{restauranteBean.restaurante.endereco.cidade}"/><br></br>
-<br></br>
+			<p>#{restauranteBean.mensagem}</p>
+			<p:commandButton action="#{restauranteBean.salvar}" value="Salvar"></p:commandButton>
+		</h:form>
+	</h:panelGrid>
+	<h:form>
+		<p:dataTable var="rest" value="#{restauranteBean.lista}">
+			<p:column headerText="Id">
+				<p:commandLink action="#{restauranteBean.exibir(rest)}"
+					value="#{rest.id}" />
+			</p:column>
 
-<p>
-	#{restauranteBean.mensagem}
-</p>
-<p:commandButton action="#{restauranteBean.inserir}" value="Salvar"></p:commandButton>
-</h:form>
-</h:panelGrid>
-<h:form>
-    <p:dataTable var="rest" value="#{restauranteBean.lista}">
-         <p:column headerText="Id">
-           <p:commandLink action="#{restauranteBean.exibir(rest)}" value="#{rest.id}"/>
-        </p:column>
-        
-        <p:column headerText="Nome">
-            <p:commandLink action="#{restauranteBean.exibir(rest)}" value="#{rest.nome}" />
-        </p:column>
- 
-        <p:column headerText="Qtd.Max de clientes">
-            <h:outputText value="#{rest.qtdMaxima}" />
-        </p:column>
- 
-        <p:column headerText="Telefone">
-            <h:outputText value="#{rest.fone}" />
-        </p:column>
- 
-       </p:dataTable>
-</h:form>
+			<p:column headerText="Nome">
+				<p:commandLink action="#{restauranteBean.exibir(rest)}"
+					value="#{rest.nome}" />
+			</p:column>
+
+			<p:column headerText="Qtd.Max de clientes">
+				<h:outputText value="#{rest.qtdMaxima}" />
+			</p:column>
+
+			<p:column headerText="Telefone">
+				<h:outputText value="#{rest.fone}" />
+			</p:column>
+			<p:column headerText="Excluir">
+				<p:commandLink action="#{restauranteBean.remover(rest)}">
+					<img src="imagens/lixo.png" />
+				</p:commandLink>
+			</p:column>
+
+
+		</p:dataTable>
+	</h:form>
 
 </h:body>
 </html>

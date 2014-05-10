@@ -58,15 +58,11 @@ public class ClienteBean {
 		return "manter_cliente.xhtml?faces-redirect=true";
 	}
 
-	public String alterarCliente() throws Exception {
-		fachada.alterar(cliente);
-		return "manter_cliente.xhtml?faces-redirect=true";
-	}
-
+	
 	public String exibir(Cliente c) {
 		System.out.println(c.getNome());
 		setCliente(c);
-		return "manter_cliente.xhtml?faces-redirect=true";
+		return null;
 
 	}
 
@@ -78,7 +74,7 @@ public class ClienteBean {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return "manter_cliente.xhtml?faces-redirect=true";
 	}
 
 }

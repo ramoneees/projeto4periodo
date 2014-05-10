@@ -10,12 +10,11 @@ import fachada.IFachada;
 
 @ManagedBean
 public class RestauranteBean {
-	
+
 	private IFachada fachada = new Fachada();
 	private Restaurante restaurante = new Restaurante();
 	private List<Restaurante> lista;
-	
-	
+
 	public List<Restaurante> getLista() {
 		try {
 			this.lista = fachada.consultarTodosRestaurante();
@@ -31,7 +30,7 @@ public class RestauranteBean {
 	}
 
 	private String mensagem;
-	
+
 	public String getMensagem() {
 		return mensagem;
 	}
@@ -48,21 +47,36 @@ public class RestauranteBean {
 		this.restaurante = restaurante;
 	}
 
-	public String inserir(){
+	public String salvar() {
 		try {
-			fachada.inserir(restaurante);
+			if (restaurante.getId() == 0) {
+				fachada.inserir(restaurante);
+			} else {
+				fachada.alterar(restaurante);
+				restaurante = new Restaurante();
+			}
+
 		} catch (Exception e) {
 			mensagem = e.getMessage();
 		}
-		return null;
-		
+		return "manter_restaurantes.xhtml?faces-redirect=true";
+
 	}
-	
-	public String exibir(Restaurante r){
-		this.restaurante = r;
+
+	public String exibir(Restaurante r) {
+		System.out.println(r.getId());
+		setRestaurante(r);
 		return null;
-		
+
 	}
-	
+	public String remover(Restaurante r ){
+		try {
+			fachada.remover(r);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return  "manter_restaurantes.xhtml?faces-redirect=true";
+	} 
 
 }
