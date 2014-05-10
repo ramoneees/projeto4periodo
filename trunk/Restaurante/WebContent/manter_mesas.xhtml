@@ -26,6 +26,37 @@
 </h:form>
 
 
+<h:form>
+		<p:dataTable var="mesa" value="#{mesaBean.lista}">
+			<p:column headerText="Id">
+				<p:commandLink action="#{mesaBean.exibir(rest)}"
+					value="#{mesa.id}" />
+			</p:column>
+
+			<p:column headerText="Nome">
+				<p:commandLink action="#{mesaBean.exibir(rest)}"
+					value="#{mesa.nome}" />
+			</p:column>
+
+			<p:column headerText="Qtd.Max de clientes">
+				<h:outputText value="#{mesa.qtdMaxima}" />
+			</p:column>
+
+			<p:column headerText="Telefone">
+				<h:outputText value="#{mesa.fone}" />
+			</p:column>
+			<p:column headerText="Excluir">
+				<p:commandLink action="#{mesaBean.remover(cli)}">
+					<img src="imagens/lixo.png" />
+				</p:commandLink>
+			</p:column>
+
+
+		</p:dataTable>
+
+
+</h:form>
+
 </h:body>
 
 </html>
