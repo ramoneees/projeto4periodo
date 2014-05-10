@@ -65,8 +65,8 @@ public class RestauranteBean {
 
 	public String exibir(Restaurante r) {
 		System.out.println(r.getId());
-		setRestaurante(r);
-		return null;
+		this.restaurante = r;
+		return "manter_restaurantes.xhtml?faces-redirect=true";
 
 	}
 	public String remover(Restaurante r ){
