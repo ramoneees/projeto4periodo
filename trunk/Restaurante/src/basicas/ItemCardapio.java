@@ -21,16 +21,7 @@ public class ItemCardapio {
 	private String composicao;
 	private String tamanho;
 	private float preco;
-	private TipoItem tipo;
 	
-	public TipoItem getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(TipoItem tipo) {
-		this.tipo = tipo;
-	}
-
 	@Enumerated(EnumType.STRING)
 	private TipoItem tipoItem;
 	

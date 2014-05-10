@@ -71,8 +71,8 @@ Dados do Restaurante
 	<h:form>
 		<p:dataTable var="rest" value="#{restauranteBean.lista}">
 			<p:column headerText="Id">
-				<p:commandLink action="#{restauranteBean.exibir(rest)}"
-					value="#{rest.id}" />
+				
+				<h:outputText value="#{rest.id}" />
 			</p:column>
 
 			<p:column headerText="Nome">

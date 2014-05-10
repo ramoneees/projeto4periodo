@@ -21,9 +21,9 @@ public class ClienteBean {
 
 	public List<Cliente> getLista() {
 		try {
-			if (lista == null) {
-				lista = fachada.consultarTodosCliente();
-			}
+
+			lista = fachada.consultarTodosCliente();
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -61,8 +61,8 @@ public class ClienteBean {
 	
 	public String exibir(Cliente c) {
 		System.out.println(c.getNome());
-		setCliente(c);
-		return null;
+		this.cliente = c;
+		return "manter_cliente.xhtml?faces-redirect=true";
 
 	}
 

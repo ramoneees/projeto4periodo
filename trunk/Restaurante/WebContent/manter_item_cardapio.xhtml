@@ -11,26 +11,66 @@ xmlns:p="http://primefaces.org/ui">
 
 <h:body>
 
+<p:panelGrid id="painelCliente" border="1" columns="2">
+<f:facet name="header">
+Dados do Item
+</f:facet>
+
 <h:form>
-
+<h:inputHidden value="#{itemCardapioBean.item.id}" />
 <label>Titulo:</label>
-<p:inputText value="#{itemCardapioBean.item.titulo}" />
+<p:inputText value="#{itemCardapioBean.item.titulo}" /> <br/><br/>
 
-<p:inputText value="#{itemCardapioBean.item.composicao}" />
+<label>Composição:</label>
+<p:inputText value="#{itemCardapioBean.item.composicao}" /><br/><br/>
 
 <label>Tamanho:</label>
-<p:inputText value="#{itemCardapioBean.item.titulo}" />
+<p:inputText value="#{itemCardapioBean.item.tamanho}" /><br/><br/>
 
 <label>Preço:</label>
-<p:inputText value="#{itemCardapioBean.item.preco}" />
+<p:inputText value="#{itemCardapioBean.item.preco}" /><br/><br/>
 
 <label>Cardápio:</label>
-<p:selectOneMenu  value="#{itemCardapioBean.tipo}">
-	<f:selectItems var="tipoItem" value="#{#{itemCardapioBean.tipo}}" itemValue="#{rest.id}" itemLabel="#{rest.nome}"/>
+<p:selectOneMenu  value="#{itemCardapioBean.item.tipoItem}">
+	<f:selectItems var="tipoItem" value="#{itemCardapioBean.tipo}" />
 </p:selectOneMenu><br/><br/>
 
+<p:commandButton action="#{itemCardapioBean.salvar}" value="Salvar"/>
 
 </h:form>
+
+</p:panelGrid> <br/><br/>
+
+<h:form>
+		<p:dataTable var="item" value="#{itemCardapioBean.lista}">
+			<p:column headerText="Id">
+				<p:commandLink action="#{itemCardapioBean.exibir(item)}"
+					value="#{item.id}" />
+			</p:column>
+
+			<p:column headerText="Titulo">
+				<p:commandLink action="#{itemCardapioBean.exibir(item)}"
+					value="#{item.titulo}" />
+			</p:column>
+
+			<p:column headerText="Composicao">
+				<h:outputText value="#{item.composicao}" />
+			</p:column>
+
+			<p:column headerText="Preço">
+				<h:outputText value="#{item.preco}" />
+			</p:column>
+			<p:column headerText="Excluir">
+				<p:commandLink action="#{itemCardapioBean.remover(item)}">
+					<img src="imagens/lixo.png" />
+				</p:commandLink>
+			</p:column>
+
+
+		</p:dataTable>
+	</h:form>
+
+
 
 
 </h:body>
