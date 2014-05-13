@@ -6,35 +6,29 @@ xmlns:f="http://java.sun.com/jsf/core"
 xmlns:p="http://primefaces.org/ui">
 <h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Restaurante do Chico</title>
+<title>Insert title here</title>
 
 </h:head>
+
 <h:body>
 
-
-<p:panelGrid columns="2">
+<p:panelGrid columns="2"  horizontal-align="center">
     <f:facet name="header">
         Login
     </f:facet>
  
-    <p:outputLabel for="login" value="Login: *" />
-    <p:inputText id="login" value="#{usuarioBean.usuario.login}"  />
+    <h:outputLabel for="Login:" value="Login: *" />
+    <p:inputText id="login" value="" required="true" label="Login" />
  
-    <p:outputLabel for="senha" value="Senha: *" />
-    <h:inputSecret id="senha" value="#{usuarioBean.usuario.senha}" required="true" />
+    <h:outputLabel for="senha" value="Senha: *" />
+    <p:inputText id="senha" value="" required="true" label="senha"/>
  
     <f:facet name="footer">
-        <p:commandButton type="button" action="#{usuarioBean.efetuarLogin}" value="Entrar" icon="ui-icon-locked" style="margin:0"/>
+        <p:commandButton type="button" value="Entrar" icon="ui-icon-locked" style="margin:0"/>
     </f:facet>
 </p:panelGrid>
 
 
-
 </h:body>
-
-
-
-
-
 
 </html>
