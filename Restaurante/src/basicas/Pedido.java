@@ -2,19 +2,13 @@ package basicas;
 import java.util.Collection;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-@Entity
-public class Pedido {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
-	
+@Entity
+public class Pedido extends Base{
+
 	@ManyToMany
 	private Collection<ItemCardapio> itens;
 	
@@ -30,14 +24,6 @@ public class Pedido {
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public Collection<ItemCardapio> getItens() {

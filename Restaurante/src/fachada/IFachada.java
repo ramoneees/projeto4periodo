@@ -8,6 +8,7 @@ import basicas.ItemCardapio;
 import basicas.Mesa;
 import basicas.Pedido;
 import basicas.Restaurante;
+import basicas.Usuario;
 
 
 
@@ -73,7 +74,11 @@ public interface IFachada {
 	
 	public List<Pedido> consultarTodosPedido()throws Exception;
 	
-
+	public void inserir(Usuario usuario)throws Exception;
+	
+	public void alterar(Usuario usuario)throws Exception;
+	
+	public boolean efetuarLogin(Usuario usuario) throws Exception;
 	
 	
 }

@@ -5,18 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 
+
 @Entity
-public class ItemCardapio {
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
-	
+public class ItemCardapio extends Base{
+
 	private String titulo;
 	private String composicao;
 	private String tamanho;
@@ -48,14 +43,6 @@ public class ItemCardapio {
 
 	public void setCombos(Collection<Combo> combos) {
 		this.combos = combos;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getTitulo() {

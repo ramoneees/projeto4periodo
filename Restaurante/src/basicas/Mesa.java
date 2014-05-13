@@ -1,17 +1,13 @@
 package basicas;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 
-@Entity
-public class Mesa {
 
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+@Entity
+public class Mesa extends Base{
+
 	private int qtd;
 	
 	@ManyToOne
@@ -22,12 +18,6 @@ public class Mesa {
 		this.restaurante = new Restaurante();
 	}
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public int getQtd() {
 		return qtd;
 	}

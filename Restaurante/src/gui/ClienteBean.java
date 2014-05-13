@@ -77,7 +77,6 @@ public class ClienteBean {
 		try {
 			fachada.remover(c);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return "manter_cliente.xhtml?faces-redirect=true";

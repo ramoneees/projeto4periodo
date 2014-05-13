@@ -7,12 +7,14 @@ import negocio.ComboNegocio;
 import negocio.ItemCardapioNegocio;
 import negocio.MesaNegocio;
 import negocio.RestauranteNegocio;
+import negocio.UsuarioNegocio;
 import basicas.Cliente;
 import basicas.Combo;
 import basicas.ItemCardapio;
 import basicas.Mesa;
 import basicas.Pedido;
 import basicas.Restaurante;
+import basicas.Usuario;
 
 public class Fachada implements IFachada {
 
@@ -20,6 +22,7 @@ public class Fachada implements IFachada {
 	MesaNegocio mesaNegocio = new MesaNegocio();
 	ItemCardapioNegocio itemNegocio = new ItemCardapioNegocio();
 	ComboNegocio comboNegocio = new ComboNegocio();
+	UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
 	
 	RestauranteNegocio restNegocio = new RestauranteNegocio();
 	@Override
@@ -203,7 +206,24 @@ public class Fachada implements IFachada {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
+	@Override
+	public void inserir(Usuario usuario) throws Exception {
+		usuarioNegocio.inserir(usuario);
+		
+	}
+
+	@Override
+	public void alterar(Usuario usuario) throws Exception {
+		usuarioNegocio.alterar(usuario);
+		
+	}
+
+	@Override
+	public boolean efetuarLogin(Usuario usuario) throws Exception {
+		
+		return usuarioNegocio.efetuarLogin(usuario);
+	}
 
 	
 }
