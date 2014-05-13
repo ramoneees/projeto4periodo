@@ -73,7 +73,6 @@ public class RestauranteBean {
 		try {
 			fachada.remover(r);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return  "manter_restaurantes.xhtml?faces-redirect=true";

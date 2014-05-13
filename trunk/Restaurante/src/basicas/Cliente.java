@@ -2,17 +2,12 @@ package basicas;
 import java.util.Collection;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 
+
 @Entity
-public class Cliente {
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+public class Cliente extends Base{
 	
 	private String nome;
 	private String email;
@@ -25,14 +20,6 @@ public class Cliente {
 	}
 	@OneToMany(mappedBy = "cliente")
 	private Collection<Pedido> pedidos;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getNome() {
 		return nome;

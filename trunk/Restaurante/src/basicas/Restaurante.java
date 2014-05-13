@@ -2,19 +2,11 @@ package basicas;
 import java.util.Collection;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-
 @Entity
-public class Restaurante {
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+public class Restaurante extends Base{
 	
 	private String nome;
 	private String fone;
@@ -32,12 +24,6 @@ public class Restaurante {
 	@ManyToMany
 	private Collection<ItemCardapio> itens;
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public String getNome() {
 		return nome;
 	}

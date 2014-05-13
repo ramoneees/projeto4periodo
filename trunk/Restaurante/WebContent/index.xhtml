@@ -6,28 +6,30 @@ xmlns:f="http://java.sun.com/jsf/core"
 xmlns:p="http://primefaces.org/ui">
 <h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
+<title>Restaurante do Chico</title>
 
 </h:head>
-
 <h:body>
 
-<p:panelGrid columns="2"  horizontal-align="center">
-    <f:facet name="header">
-        Login
-    </f:facet>
- 
-    <h:outputLabel for="Login:" value="Login: *" />
-    <p:inputText id="login" value="" required="true" label="Login" />
- 
-    <h:outputLabel for="senha" value="Senha: *" />
-    <p:inputText id="senha" value="" required="true" label="senha"/>
- 
-    <f:facet name="footer">
-        <p:commandButton type="button" value="Entrar" icon="ui-icon-locked" style="margin:0"/>
-    </f:facet>
-</p:panelGrid>
+
+<p:breadCrumb>
+<p:menuitem value="Home" url="#"/>
+<p:menuitem value="Clientes" url="manter_cliente.xhtml"/>
+<p:menuitem value="Restaurantes" url="manter_restaurantes.xhtml"/>
+<p:menuitem value="Cardápio" url="manter_item_cardapio.xhtml"/>
+<p:menuitem value="Combos" url="manter_combos.xhtml"/>
+<p:menuitem value="Mesas" url="manter_mesas.xhtml"/>
+<p:menuitem value="Pedidos" url="manter_pedidos.xhtml"/>
+</p:breadCrumb>
+
+
+
 
 </h:body>
+
+
+
+
+
 
 </html>
