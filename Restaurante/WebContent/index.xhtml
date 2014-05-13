@@ -18,16 +18,16 @@ xmlns:p="http://primefaces.org/ui">
     </f:facet>
  
     <h:outputLabel for="Login:" value="Login: *" />
-    <p:inputText id="login" value="" required="true" label="Login" />
+    <p:inputText id="login" value="#{usuarioBean.usuario.login}" required="true" label="Login" />
  
     <h:outputLabel for="senha" value="Senha: *" />
-    <p:inputText id="senha" value="" required="true" label="senha"/>
+    <p:inputText id="senha" value="#{usuarioBean.usuario.senha}" required="true" label="senha"/>
  
     <f:facet name="footer">
-        <p:commandButton type="button" value="Entrar" icon="ui-icon-locked" style="margin:0"/>
+        <p:commandButton type="button" value="Entrar" action="#{usuarioBean.efetuarLogin}" icon="ui-icon-locked" style="margin:0"/>
     </f:facet>
 </p:panelGrid>
-
+<p><i>#{usuarioBean.mensagem}</i></p>
 
 </h:body>
 

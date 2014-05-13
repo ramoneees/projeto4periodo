@@ -59,7 +59,7 @@ public class UsuarioBean {
 	public String efetuarLogin(){
 		
 		try {
-			if (fachada.efetuarLogin(usuario)) {
+			if (fachada.efetuarLogin(usuario)== true) {
 				return "menu.xhtml?faces-redirect=true";
 			}
 			
