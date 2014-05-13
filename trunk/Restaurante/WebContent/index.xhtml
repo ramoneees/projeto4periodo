@@ -12,16 +12,21 @@ xmlns:p="http://primefaces.org/ui">
 <h:body>
 
 
-<p:breadCrumb>
-<p:menuitem value="Home" url="#"/>
-<p:menuitem value="Clientes" url="manter_cliente.xhtml"/>
-<p:menuitem value="Restaurantes" url="manter_restaurantes.xhtml"/>
-<p:menuitem value="Cardápio" url="manter_item_cardapio.xhtml"/>
-<p:menuitem value="Combos" url="manter_combos.xhtml"/>
-<p:menuitem value="Mesas" url="manter_mesas.xhtml"/>
-<p:menuitem value="Pedidos" url="manter_pedidos.xhtml"/>
-</p:breadCrumb>
-
+<p:panelGrid columns="2">
+    <f:facet name="header">
+        Login
+    </f:facet>
+ 
+    <p:outputLabel for="login" value="Login: *" />
+    <p:inputText id="login" value="#{usuarioBean.usuario.login}"  />
+ 
+    <p:outputLabel for="senha" value="Senha: *" />
+    <h:inputSecret id="senha" value="#{usuarioBean.usuario.senha}" required="true" />
+ 
+    <f:facet name="footer">
+        <p:commandButton type="button" action="#{usuarioBean.efetuarLogin}" value="Entrar" icon="ui-icon-locked" style="margin:0"/>
+    </f:facet>
+</p:panelGrid>
 
 
 
