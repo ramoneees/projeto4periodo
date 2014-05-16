@@ -45,6 +45,7 @@ public class LoginBean {
 	}
 	public String efetuarLogin() {
 		try {
+			System.out.println("teste");
 			usuarioLogado = fachada.efetuarLogin(login, senha);
 			return "menu.xhtml?faces-redirect=true";
 		} catch (LoginInvalidoException e) {
@@ -52,7 +53,7 @@ public class LoginBean {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Login/Senha Incorretos"));
 		}
-		return "/index.xhtml?faces-redirect=true";
+		return "menu.xhtml?faces-redirect=true";
 		
 }
 	

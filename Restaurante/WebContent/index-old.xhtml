@@ -7,12 +7,26 @@ xmlns:p="http://primefaces.org/ui">
 <h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Insert title here</title>
-</h:head>
-<h:body>
-<p:inputText value="#{loginBean.login}" />
-<p:inputText value="#{loginBean.senha}" />
-<p:commandButton action="#{loginBean.efetuarLogin}" value="Entrar" />
 
+</h:head>
+
+<h:body>
+
+<h:form>
+    <p:inputText id="login" value="#{loginBean.login}" required="true" label="Login" />
+ 
+    <h:outputLabel for="senha" value="Senha: *" />
+    <p:inputText id="senha" value="#{loginBean.senha}" required="true" label="senha"/>
+        <p:commandButton type="button" value="Entrar" action="#{loginBean.efetuarLogin}"  /> 
+    </h:form>
+    
+
+
+
+    
+
+<p><i>#{loginBean.mensagem}</i></p>
 
 </h:body>
+
 </html>
