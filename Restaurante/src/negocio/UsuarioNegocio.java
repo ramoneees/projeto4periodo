@@ -1,6 +1,7 @@
 package negocio;
 
 
+import seguranca.LoginInvalidoException;
 import dados.UsuarioDAO;
 import basicas.Usuario;
 
@@ -39,17 +40,9 @@ public class UsuarioNegocio {
 		usuariodao.remover(usuario);
 	}
 	
-	public boolean efetuarLogin(Usuario usuario) throws Exception{
-		if (usuario.getNome().isEmpty() || usuario.getNome() == null) {
-			throw new Exception("informe o nome do usuario");
-		}else if (usuario.getLogin().isEmpty() || usuario.getLogin() == null) {
-			throw new Exception("informe o login do usuario");
-		}else if (usuario.getSenha().isEmpty() || usuario.getSenha() == null) {
-			throw new Exception("informe a senha do usuario");
-		}
-		
-		return usuariodao.efetuarLogin(usuario);
+	public Usuario efetuarLogin(String login, String senha)
+			throws LoginInvalidoException {
+		return usuariodao.efetuarLogin(login, senha);
 	}
-	
 
 }

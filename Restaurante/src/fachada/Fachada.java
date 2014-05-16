@@ -2,6 +2,7 @@ package fachada;
 
 import java.util.List;
 
+import seguranca.LoginInvalidoException;
 import negocio.ClienteNegocio;
 import negocio.ComboNegocio;
 import negocio.ItemCardapioNegocio;
@@ -220,10 +221,11 @@ public class Fachada implements IFachada {
 	}
 
 	@Override
-	public boolean efetuarLogin(Usuario usuario) throws Exception {
-		
-		return usuarioNegocio.efetuarLogin(usuario);
+	public Usuario efetuarLogin(String login, String senha)throws LoginInvalidoException {
+		// TODO Auto-generated method stub
+		return usuarioNegocio.efetuarLogin(login, senha);
 	}
+
 
 	
 }
