@@ -50,10 +50,12 @@ public class LoginBean {
 			return "menu.xhtml?faces-redirect=true";
 		} catch (LoginInvalidoException e) {
 		
-			FacesContext.getCurrentInstance().addMessage(null,
+			 FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Login/Senha Incorretos"));
+			 
+			 mensagem = "Login/Senha Incorretos";
 		}
-		return "menu.xhtml?faces-redirect=true";
+		return null;
 		
 }
 	
@@ -63,10 +65,6 @@ public class LoginBean {
 	public void setMensagem(String mensagem) {
 		this.mensagem = mensagem;
 	}
-	public void teste(){
-		
-		this.mensagem  = "testando";
-		
-	}
+	
 	
 }
