@@ -2,6 +2,7 @@ package fachada;
 
 import java.util.List;
 
+import seguranca.LoginInvalidoException;
 import basicas.Cliente;
 import basicas.Combo;
 import basicas.ItemCardapio;
@@ -78,7 +79,7 @@ public interface IFachada {
 	
 	public void alterar(Usuario usuario)throws Exception;
 	
-	public boolean efetuarLogin(Usuario usuario) throws Exception;
+	public Usuario efetuarLogin(String login, String senha) throws LoginInvalidoException;
 	
 	
 }

@@ -1,25 +1,31 @@
 package dados;
 
 
-import javax.persistence.Query;
 
+import javax.persistence.TypedQuery;
+
+import seguranca.LoginInvalidoException;
 import basicas.Usuario;
 
 public class UsuarioDAO extends DAO.DAOGenerico<Usuario> implements IUsuarioDAO {
 
 	@Override
-	public boolean efetuarLogin(Usuario u){
-		Query q1 = this.entityManager.createQuery("SELECT u from Usuario u WHERE  u.login = :login  and  u.senha = :senha ");
-		q1.setParameter("login", u.getLogin());
-		q1.setParameter("senha", u.getSenha());
-		
-		if (q1.getResultList().isEmpty()) {
-			return false;
-		}else{
-		
-		return true;
+	public Usuario efetuarLogin(String login, String senha) throws LoginInvalidoException{
+		try {
+			TypedQuery<Usuario> query = getEntityManager().createNamedQuery("efetuarLogin", Usuario.class);
+			query.setParameter("log", login);
+			query.setParameter("sen", senha);
+			return query.getSingleResult();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+			System.out.println("Login/senha não existe");
+			throw new LoginInvalidoException();
 		}
-	}
+	
+	
 	
 
+	}
+	
 }
