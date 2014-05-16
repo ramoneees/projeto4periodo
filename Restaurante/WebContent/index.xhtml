@@ -10,6 +10,9 @@ xmlns:p="http://primefaces.org/ui">
 </h:head>
 <h:body>
 <h:form>
+ <p:messages id="messages" showDetail="true" autoUpdate="true"  closable="true" />
+
+
 <p:inputText value="#{loginBean.login}" />
 <p:inputText value="#{loginBean.senha}" />
 <p:commandButton action="#{loginBean.efetuarLogin}" value="Entrar" />
