@@ -42,6 +42,12 @@ public class UsuarioNegocio {
 	
 	public Usuario efetuarLogin(String login, String senha)
 			throws LoginInvalidoException {
+		if(login == null || login.trim().isEmpty()){
+			throw new LoginInvalidoException("Favor inserir o login");
+		}
+		if(senha == null || senha.trim().isEmpty()) {
+			throw new LoginInvalidoException("Favor inserir a senha");
+		}
 		return usuariodao.efetuarLogin(login, senha);
 	}
 

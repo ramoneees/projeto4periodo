@@ -51,13 +51,17 @@ public class LoginBean {
 		} catch (LoginInvalidoException e) {
 		
 			 FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage("Login/Senha Incorretos"));
+					new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro!","Login/Senha Incorretos"));
 			 
 			 mensagem = "Login/Senha Incorretos";
 		}
 		return null;
 		
 }
+	public String efetuarLogoff() {
+		usuarioLogado = null;
+		return "index.xhtml?faces-redirect=true";
+	}
 	
 	public String getMensagem() {
 		return mensagem;
