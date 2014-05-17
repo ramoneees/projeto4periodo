@@ -48,7 +48,7 @@ public class ClienteBean {
 		System.out.println(cliente.getId());
 		try {
 			if (cliente.getId() == 0) {
-
+			
 				fachada.inserir(cliente);
 			} else {
 
