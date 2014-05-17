@@ -13,9 +13,9 @@ public class ClienteDao extends DAO.DAOGenerico<Cliente> implements IClienteDAO 
 	public List<Cliente> pesquisarClientePorNome(String nome, TipoPesquisaString tipoPesquisa) {
 		TypedQuery<Cliente> tq = this.entityManager.createNamedQuery("Cliente.findByNome", Cliente.class);
 		if (tipoPesquisa == TipoPesquisaString.COMECA_COM){
-			tq.setParameter("valor", nome + "%");	
+			tq.setParameter("n", nome + "%");	
 		} else if (tipoPesquisa == TipoPesquisaString.CONTEM){
-			tq.setParameter("valor", "%" + nome + "%");	
+			tq.setParameter("n", "%" + nome + "%");	
 		}
 		return tq.getResultList();
 	}

@@ -1,5 +1,6 @@
 package basicas;
 
+import java.security.Timestamp;
 import java.util.Date;
 
 import javax.persistence.GeneratedValue;
@@ -23,8 +24,16 @@ public class Base {
 	@ManyToOne
 	private Usuario usuario;
 	
+	public Base(){
+		this.setDate(new Date());
+	}
 	
-	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 	public Usuario getUsuario() {
 		return usuario;
 	}

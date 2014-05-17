@@ -226,6 +226,5 @@ public class Fachada implements IFachada {
 		return usuarioNegocio.efetuarLogin(login, senha);
 	}
 
-
 	
 }

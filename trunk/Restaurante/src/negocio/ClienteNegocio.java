@@ -67,4 +67,5 @@ public class ClienteNegocio {
 		return clienteDao.consultarPorId(id);
 		
 	}
+	
 }
