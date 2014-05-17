@@ -48,11 +48,11 @@ Dados do Cliente
 
 <h:form>
     <p:dataTable var="cli" value="#{clienteBean.lista}">
-         <p:column headerText="Id">
+         <p:column headerText="Id" filterBy = "#{cli.id}">
            <h:outputText value="#{cli.id}"/>
         </p:column>
         
-        <p:column headerText="Nome">
+        <p:column headerText="Nome" filterBy = "#{cli.nome}">
             <p:commandLink action="#{clienteBean.exibir(cli)}" value="#{cli.nome}"  ajax="false"/>
         </p:column>
  

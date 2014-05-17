@@ -2,11 +2,13 @@ package basicas;
 import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 
 
 @Entity
+@NamedQuery(name="Cliente.findByNome", query = "Select c from Cliente c where c.nome = :n")
 public class Cliente extends Base{
 	
 	private String nome;
