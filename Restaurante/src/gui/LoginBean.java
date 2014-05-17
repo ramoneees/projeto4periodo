@@ -25,6 +25,13 @@ public class LoginBean {
 	private String senha;
 	private String mensagem;
 	
+	public String getMensagem() {
+		return mensagem;
+	}
+	public void setMensagem(String mensagem) {
+		this.mensagem = mensagem;
+	}
+	
 	public Usuario getUsuarioLogado() {
 		return usuarioLogado;
 	}
@@ -50,10 +57,19 @@ public class LoginBean {
 			return "menu.xhtml?faces-redirect=true";
 		} catch (LoginInvalidoException e) {
 		
+
+			 FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Login/Senha Incorretos"));
+
 			 FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro!","Login/Senha Incorretos"));
 			 
 			 mensagem = "Login/Senha Incorretos";
+
+			 
+			 mensagem = e.getMessage();
+			 
+			 System.out.println(mensagem);
 		}
 		return null;
 		
@@ -63,12 +79,6 @@ public class LoginBean {
 		return "index.xhtml?faces-redirect=true";
 	}
 	
-	public String getMensagem() {
-		return mensagem;
-	}
-	public void setMensagem(String mensagem) {
-		this.mensagem = mensagem;
-	}
 	
 	
 }
