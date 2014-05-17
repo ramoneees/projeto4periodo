@@ -20,7 +20,9 @@ import fachada.IFachada;
 public class LoginBean {
 
 	private IFachada fachada = new Fachada();
+
 	private Usuario usuarioLogado = new  Usuario();
+
 	private String login;
 	private String senha;
 	private String mensagem;

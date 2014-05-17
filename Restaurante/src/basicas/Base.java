@@ -1,6 +1,6 @@
 package basicas;
 
-import java.security.Timestamp;
+
 import java.util.Date;
 
 import javax.persistence.GeneratedValue;
