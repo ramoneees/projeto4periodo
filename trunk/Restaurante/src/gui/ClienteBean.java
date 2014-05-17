@@ -3,8 +3,14 @@ package gui;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+
+
+
+import dados.TipoPesquisaString;
 
 import basicas.Cliente;
+import basicas.Usuario;
 import fachada.Fachada;
 import fachada.IFachada;
 
@@ -14,9 +20,30 @@ public class ClienteBean {
 	private IFachada fachada = new Fachada();
 	private Cliente cliente = new Cliente();
 	private List<Cliente> lista;
+	private String nome;
+	private TipoPesquisaString tipoPesquisa;
+	
+	@ManagedProperty("#{loginBean.usuarioLogado}")
+	private Usuario usuarioLogado;
+
+	public Usuario getUsuarioLogado() {
+		return usuarioLogado;
+	}
+
+	public void setUsuarioLogado(Usuario usuarioLogado) {
+		this.usuarioLogado = usuarioLogado;
+	}
 
 	public ClienteBean() {
 		this.lista = null;
+	}
+	
+	public TipoPesquisaString getTipoPesquisa() {
+		return tipoPesquisa;
+	}
+
+	public void setTipoPesquisa(TipoPesquisaString tipoPesquisa) {
+		this.tipoPesquisa = tipoPesquisa;
 	}
 
 	public List<Cliente> getLista() {
@@ -48,7 +75,10 @@ public class ClienteBean {
 		System.out.println(cliente.getId());
 		try {
 			if (cliente.getId() == 0) {
-			
+
+				
+				cliente.setUsuario(usuarioLogado);
+
 				fachada.inserir(cliente);
 			} else {
 
@@ -81,5 +111,15 @@ public class ClienteBean {
 		}
 		return "manter_cliente.xhtml?faces-redirect=true";
 	}
+	
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
 
 }

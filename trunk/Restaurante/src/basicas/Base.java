@@ -34,12 +34,6 @@ public class Base {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	public Usuario getUsuario() {
-		return usuario;
-	}
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
 	public Date getDate() {
 		return date;
 	}
