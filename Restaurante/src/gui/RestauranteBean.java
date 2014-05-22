@@ -3,8 +3,10 @@ package gui;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 
 import basicas.Restaurante;
+import basicas.Usuario;
 import fachada.Fachada;
 import fachada.IFachada;
 
@@ -14,6 +16,10 @@ public class RestauranteBean {
 	private IFachada fachada = new Fachada();
 	private Restaurante restaurante = new Restaurante();
 	private List<Restaurante> lista;
+	
+	@ManagedProperty("#{loginBean.usuarioLogado}")
+	private Usuario usuarioLogado;
+
 
 	public List<Restaurante> getLista() {
 		try {
@@ -50,6 +56,7 @@ public class RestauranteBean {
 	public String salvar() {
 		try {
 			if (restaurante.getId() == 0) {
+				restaurante.setUsuario(usuarioLogado);
 				fachada.inserir(restaurante);
 			} else {
 				fachada.alterar(restaurante);

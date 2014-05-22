@@ -3,9 +3,11 @@ package gui;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 
 import basicas.ItemCardapio;
 import basicas.TipoItem;
+import basicas.Usuario;
 import fachada.Fachada;
 
 @ManagedBean
@@ -15,7 +17,9 @@ public class ItemCardapioBean {
 	private ItemCardapio item = new ItemCardapio();
 	private List<ItemCardapio> lista;
 	private TipoItem tipo;
-	
+	@ManagedProperty("#{loginBean.usuarioLogado}")
+	private Usuario usuarioLogado;
+
 	
 	
 	public TipoItem[]  getTipo() {
@@ -48,6 +52,7 @@ public class ItemCardapioBean {
 		
 		try {
 			if(item.getId() == 0){
+				item.setUsuario(usuarioLogado);
 				fachada.inserir(item);
 			}else{
 				

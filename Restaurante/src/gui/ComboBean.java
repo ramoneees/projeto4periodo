@@ -3,9 +3,11 @@ package gui;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 
 import basicas.Combo;
 import basicas.ItemCardapio;
+import basicas.Usuario;
 import fachada.Fachada;
 import fachada.IFachada;
 
@@ -18,6 +20,12 @@ public class ComboBean {
 	private ItemCardapio item2 = new ItemCardapio();
 	private ItemCardapio item3 = new ItemCardapio();
 	private List<ItemCardapio> listaItens;
+	private int idItem1;
+	private int idItem2;
+	private int idItem3;
+	@ManagedProperty("#{loginBean.usuarioLogado}")
+	private Usuario usuarioLogado;
+
 
 	public List<ItemCardapio> getListaItens() {
 		try {
@@ -84,9 +92,15 @@ public class ComboBean {
 	public String salvar() {
 
 		try {
-			System.out.println(combo.getPreco());
-			if (combo.getId() == 0) {
 
+			System.out.println(combo.getPreco());
+			combo.getItens().add(fachada.consultarItemPorId(idItem1));
+			combo.getItens().add(fachada.consultarItemPorId(idItem2));
+			combo.getItens().add(fachada.consultarItemPorId(idItem3));
+			
+			
+			if (combo.getId() == 0) {
+				combo.setUsuario(usuarioLogado);
 				fachada.inserir(combo);
 			} else {
 				fachada.alterar(combo);
@@ -99,6 +113,30 @@ public class ComboBean {
 		}
 		return "manter_combo.xhtml?faces-redirect=true";
 
+	}
+
+	public int getIdItem1() {
+		return idItem1;
+	}
+
+	public void setIdItem1(int idItem1) {
+		this.idItem1 = idItem1;
+	}
+
+	public int getIdItem2() {
+		return idItem2;
+	}
+
+	public void setIdItem2(int idItem2) {
+		this.idItem2 = idItem2;
+	}
+
+	public int getIdItem3() {
+		return idItem3;
+	}
+
+	public void setIdItem3(int idItem3) {
+		this.idItem3 = idItem3;
 	}
 
 	public String exibir(Combo c) {
