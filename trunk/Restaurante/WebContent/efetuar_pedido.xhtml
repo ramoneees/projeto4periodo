@@ -9,15 +9,11 @@ xmlns:p="http://primefaces.org/ui">
 <title>Insert title here</title>
 </h:head>
 <h:body>
-<h:form>
- <p:messages id="messages" showDetail="true" autoUpdate="true"  closable="true" />
-<p:outputLabel for="login" value="Login:" />
-<h:inputText id="login" value="#{loginBean.login}" /> <br/>
-<p:outputLabel for="senha" value="Senha:" />
-<h:inputSecret id="senha" value="#{loginBean.senha}" /> <br/>
-<p:commandButton action="#{loginBean.efetuarLogin}" value="Entrar" />
-</h:form>
 
+<p:outputLabel for="idItem" value=" código do item:" />
+<p:inputText id="idItem" value="#{pedidoBean.idItem}" /> <br />
+
+<p:commandButton value="Adicionar Item" action="#{pedidoBean.adicionarItens}" />
 
 
 </h:body>

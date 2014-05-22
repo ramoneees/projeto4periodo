@@ -15,6 +15,17 @@ public class Pedido extends Base{
 	@ManyToMany
 	private Collection<Combo> combos;
 	
+	private float valorTotal;
+	
+	
+	public float getValorTotal() {
+		return valorTotal;
+	}
+
+	public void setValorTotal(float valorTotal) {
+		this.valorTotal = valorTotal;
+	}
+
 	@ManyToOne
 	private Cliente cliente;
 

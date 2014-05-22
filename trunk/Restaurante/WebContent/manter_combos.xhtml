@@ -16,20 +16,22 @@ xmlns:p="http://primefaces.org/ui">
 Dados dos combos
 </f:facet>
 <h:inputHidden value="#{comboBean.combo.id}" />
-<p:selectOneMenu  value="#{comboBean.item1}">
+<p:selectOneMenu  value="#{comboBean.idItem1}">
 	<f:selectItems var="listaIntens" value="#{comboBean.listaItens}" itemValue="#{listaIntens.id}" itemLabel="#{listaIntens.titulo}"/>
 </p:selectOneMenu>
 
-<p:selectOneMenu  value="#{comboBean.item2}">
+<p:selectOneMenu  value="#{comboBean.idItem2}">
 	<f:selectItems var="listaIntens" value="#{comboBean.listaItens}" itemValue="#{listaIntens.id}" itemLabel="#{listaIntens.titulo}"/>
 </p:selectOneMenu>
 
-<p:selectOneMenu  value="#{comboBean.item3}">
+<p:selectOneMenu  value="#{comboBean.idItem3}">
 	<f:selectItems var="listaIntens" value="#{comboBean.listaItens}" itemValue="#{listaIntens.id}" itemLabel="#{listaIntens.titulo}"/>
 </p:selectOneMenu>
 
 <label>Preço:</label>
-<p:inputText value="#{comboBean.combo.preco}" />
+<p:inputText value="#{comboBean.combo.preco}">
+
+</p:inputText>
 
 <p:commandButton action="#{comboBean.salvar}" value="Salvar" />
 

@@ -7,6 +7,7 @@ import negocio.ClienteNegocio;
 import negocio.ComboNegocio;
 import negocio.ItemCardapioNegocio;
 import negocio.MesaNegocio;
+import negocio.PedidoNegocio;
 import negocio.RestauranteNegocio;
 import negocio.UsuarioNegocio;
 import basicas.Cliente;
@@ -24,6 +25,7 @@ public class Fachada implements IFachada {
 	ItemCardapioNegocio itemNegocio = new ItemCardapioNegocio();
 	ComboNegocio comboNegocio = new ComboNegocio();
 	UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+	PedidoNegocio pedidoNegocio = new PedidoNegocio();
 	
 	RestauranteNegocio restNegocio = new RestauranteNegocio();
 	@Override
@@ -180,7 +182,7 @@ public class Fachada implements IFachada {
 
 	@Override
 	public void inserir(Pedido pedido) throws Exception {
-		// TODO Auto-generated method stub
+		pedidoNegocio.inserir(pedido);
 		
 	}
 
