@@ -6,6 +6,7 @@ import seguranca.LoginInvalidoException;
 import basicas.Cliente;
 import basicas.Combo;
 import basicas.ItemCardapio;
+import basicas.ItemCardapioPedido;
 import basicas.Mesa;
 import basicas.Pedido;
 import basicas.Restaurante;
@@ -81,5 +82,5 @@ public interface IFachada {
 	
 	public Usuario efetuarLogin(String login, String senha) throws LoginInvalidoException;
 	
-	
+	public void inserir(ItemCardapioPedido itemCardPed) throws Exception;
 }
