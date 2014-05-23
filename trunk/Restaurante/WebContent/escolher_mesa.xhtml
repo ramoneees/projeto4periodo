@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="templates/template.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">Selecionar a Mesa</ui:define>
+
+	<p:outputLabel for="selectMesa">Selecione a mesa para adicionar o pedido</p:outputLabel>
+	<ui:define name="principal">
+		<p:selectOneMenu  id="selectMesa" value="#{pedidoBean.mesaId}">
+			<f:selectItem noSelectionOption="true" itemLabel="Selecione uma mesa"></f:selectItem>
+			<f:selectItems var="mesa" value="#{pedidoBean.listaMesa}"
+				itemValue="#{mesa.id}" itemLabel="#{mesa.id}" />
+		</p:selectOneMenu>
+	
+
+	</ui:define>
+
+</ui:composition>
