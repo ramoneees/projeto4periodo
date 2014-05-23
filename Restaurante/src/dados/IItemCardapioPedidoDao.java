@@ -1,8 +1,8 @@
 package dados;
 
 import DAO.IDAOGenerico;
-import basicas.ItemCardapio;
+import basicas.ItemCardapioPedido;
 
-public interface IItemCardapioPedidoDao  extends IDAOGenerico<ItemCardapio>{
+public interface IItemCardapioPedidoDao  extends IDAOGenerico<ItemCardapioPedido>{
 
 }

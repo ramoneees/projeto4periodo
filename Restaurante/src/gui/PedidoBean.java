@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 
 import basicas.ItemCardapio;
 import basicas.ItemCardapioPedido;
@@ -16,7 +16,7 @@ import fachada.Fachada;
 import fachada.IFachada;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class PedidoBean {
 
 	private List<Pedido> pedidos;
@@ -27,6 +27,7 @@ public class PedidoBean {
 	private IFachada fachada = new Fachada();
 	private List<Mesa> listaMesa = new ArrayList<Mesa>();
 	private Mesa mesa = new Mesa();
+	
 	private Integer mesaId;
 	private int idItem;
 	float valorTotal;
@@ -156,6 +157,7 @@ public class PedidoBean {
 			itemcardPedido.setPedido(pedido);
 			
 			fachada.inserir(pedido);
+			fachada.inserir(itemcardPedido);
 			
 			item = new ItemCardapio();
 

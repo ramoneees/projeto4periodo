@@ -6,6 +6,7 @@ import seguranca.LoginInvalidoException;
 import negocio.ClienteNegocio;
 import negocio.ComboNegocio;
 import negocio.ItemCardapioNegocio;
+import negocio.ItemCardapioPedidoNegocio;
 import negocio.MesaNegocio;
 import negocio.PedidoNegocio;
 import negocio.RestauranteNegocio;
@@ -13,6 +14,7 @@ import negocio.UsuarioNegocio;
 import basicas.Cliente;
 import basicas.Combo;
 import basicas.ItemCardapio;
+import basicas.ItemCardapioPedido;
 import basicas.Mesa;
 import basicas.Pedido;
 import basicas.Restaurante;
@@ -26,6 +28,7 @@ public class Fachada implements IFachada {
 	ComboNegocio comboNegocio = new ComboNegocio();
 	UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
 	PedidoNegocio pedidoNegocio = new PedidoNegocio();
+	ItemCardapioPedidoNegocio itemPedido = new ItemCardapioPedidoNegocio();
 	
 	RestauranteNegocio restNegocio = new RestauranteNegocio();
 	@Override
@@ -226,6 +229,12 @@ public class Fachada implements IFachada {
 	public Usuario efetuarLogin(String login, String senha)throws LoginInvalidoException {
 		// TODO Auto-generated method stub
 		return usuarioNegocio.efetuarLogin(login, senha);
+	}
+
+	@Override
+	public void inserir(ItemCardapioPedido itemCardPed) throws Exception {
+		itemPedido.inserir(itemCardPed);
+		
 	}
 
 	

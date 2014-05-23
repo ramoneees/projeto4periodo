@@ -1,7 +1,7 @@
 package dados;
 
-import basicas.ItemCardapio;
+import basicas.ItemCardapioPedido;
 
-public class ItemCardapioPedidoDAO extends DAO.DAOGenerico<ItemCardapio> implements IItemCardapioPedidoDao{
+public class ItemCardapioPedidoDAO extends DAO.DAOGenerico<ItemCardapioPedido> implements IItemCardapioPedidoDao{
 
 }
