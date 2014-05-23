@@ -1,20 +1,50 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:h="http://java.sun.com/jsf/html"
-xmlns:f="http://java.sun.com/jsf/core"
-xmlns:p="http://primefaces.org/ui">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Insert title here</title>
 </h:head>
 <h:body>
 
-<p:outputLabel for="idItem" value=" código do item:" />
-<p:inputText id="idItem" value="#{pedidoBean.idItem}" /> <br />
+	<h:form>
+		
+		<p:selectOneMenu  value="#{pedidoBean.idItem}">
+			<f:selectItem noSelectionOption="true" itemLabel="Selecione um item"></f:selectItem>
+			<f:selectItems var="lista" value="#{pedidoBean.itensLista}" itemValue="#{lista.id}" itemLabel="#{lista.titulo}"/>
+		</p:selectOneMenu>
+		
+		<p:selectOneMenu  value="#{pedidoBean.mesaId}">
+			<f:selectItem noSelectionOption="true" itemLabel="Selecione uma mesa"></f:selectItem>
+			<f:selectItems var="mesa" value="#{pedidoBean.listaMesa}" itemValue="#{mesa.id}" itemLabel="#{mesa.id}"/>
+		</p:selectOneMenu>
 
-<p:commandButton value="Adicionar Item" action="#{pedidoBean.adicionarItens}" />
+		<p:commandButton value="Adicionar Item" update="tabPedido"
+			action="#{pedidoBean.adicionarItens}">
+			
+			</p:commandButton>
 
+
+		<p:dataTable var="pedido" value="#{pedidoBean.pedidos}" emptyMessage="nenhum item adicionado" id="tabPedido">
+
+			<p:column headerText="Titulo">
+				<h:outputText value="#{pedido.itens.titulo}" />
+			</p:column>
+
+			<p:column headerText="Preço">
+				<h:outputText value="#{pedido.itens.preco}" />
+			</p:column>
+			
+			<p:column headerText="Mesa">
+				<h:outputText value="#{pedido.mesa.id}" />
+			</p:column>
+
+		</p:dataTable>
+
+	</h:form>
 
 </h:body>
 </html>

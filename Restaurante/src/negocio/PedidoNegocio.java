@@ -10,12 +10,7 @@ public class PedidoNegocio {
 	
 	public void inserir(Pedido pedido) throws Exception{
 		
-		if(pedido.getCliente() == null){
-			throw new Exception("Favor Inserir os Dados do Cliente");
-			//dao.inserir(pedido);
-		}
-		
-		
+		dao.inserir(pedido);
 	}
 	
 }

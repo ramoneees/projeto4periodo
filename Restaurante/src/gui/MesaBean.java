@@ -1,3 +1,4 @@
+
 package gui;
 
 import java.util.List;
@@ -26,6 +27,14 @@ public class MesaBean {
 	@ManagedProperty("#{loginBean.usuarioLogado}")
 	private Usuario usuarioLogado;
 
+
+	public Usuario getUsuarioLogado() {
+		return usuarioLogado;
+	}
+
+	public void setUsuarioLogado(Usuario usuarioLogado) {
+		this.usuarioLogado = usuarioLogado;
+	}
 
 	public Restaurante getRestaurante() {
 		return restaurante;
