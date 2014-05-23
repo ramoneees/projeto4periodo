@@ -2,6 +2,8 @@ package basicas;
 import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
@@ -9,7 +11,8 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Pedido extends Base{
 
-
+	@Enumerated(EnumType.STRING)
+	private StatusPedido status;
 	
 	@ManyToMany
 	private Collection<Combo> combos;
@@ -54,6 +57,14 @@ public class Pedido extends Base{
 
 	public void setCombos(Collection<Combo> combos) {
 		this.combos = combos;
+	}
+	
+	public StatusPedido getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusPedido status) {
+		this.status = status;
 	}
 	
 }
