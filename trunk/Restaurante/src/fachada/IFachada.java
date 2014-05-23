@@ -31,7 +31,7 @@ public interface IFachada {
 	
 	public void remover(Mesa mesa)throws Exception;
 	
-	public Mesa consultarPorId(Integer id)throws Exception;
+	public Mesa consultarPorMesaId(Integer id)throws Exception;
 	
 	public List<Mesa> consultarTodosMesa()throws Exception;
 	

@@ -9,12 +9,22 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Pedido extends Base{
 
-	@ManyToMany
-	private Collection<ItemCardapio> itens;
+
 	
 	@ManyToMany
 	private Collection<Combo> combos;
 	
+	@ManyToOne
+	private Mesa mesa;
+	
+	public Mesa getMesa() {
+		return mesa;
+	}
+
+	public void setMesa(Mesa mesa) {
+		this.mesa = mesa;
+	}
+
 	private float valorTotal;
 	
 	
@@ -37,13 +47,6 @@ public class Pedido extends Base{
 		this.cliente = cliente;
 	}
 
-	public Collection<ItemCardapio> getItens() {
-		return itens;
-	}
-
-	public void setItens(Collection<ItemCardapio> itens) {
-		this.itens = itens;
-	}
 
 	public Collection<Combo> getCombos() {
 		return combos;

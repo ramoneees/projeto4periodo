@@ -77,9 +77,9 @@ public class Fachada implements IFachada {
 	}
 
 	@Override
-	public Mesa consultarPorId(Integer id) throws Exception {
+	public Mesa consultarPorMesaId(Integer id) throws Exception {
 		
-		return mesaNegocio.consultarporId(id);
+		return mesaNegocio.consultarMesaporId(id);
 	}
 
 	@Override

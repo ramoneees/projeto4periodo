@@ -22,6 +22,12 @@ public class ItemCardapioBean {
 
 	
 	
+	public Usuario getUsuarioLogado() {
+		return usuarioLogado;
+	}
+	public void setUsuarioLogado(Usuario usuarioLogado) {
+		this.usuarioLogado = usuarioLogado;
+	}
 	public TipoItem[]  getTipo() {
 		return tipo.values();
 	}

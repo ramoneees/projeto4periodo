@@ -42,7 +42,7 @@ public class MesaNegocio {
 		return dao.consultarTodos();
 	}
 	
-	public Mesa consultarporId(int id){
+	public Mesa consultarMesaporId(int id){
 		
 		return dao.consultarPorId(id);
 	}

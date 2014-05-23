@@ -20,30 +20,9 @@ public class ItemCardapio extends Base{
 	@Enumerated(EnumType.STRING)
 	private TipoItem tipoItem;
 	
-	@ManyToMany(mappedBy = "itens", fetch = FetchType.LAZY)
-	private Collection<Restaurante> restaurantes;
-	
-	@ManyToMany(mappedBy = "itens", fetch = FetchType.LAZY)
-	private Collection<Combo> combos;
-	
-	@ManyToMany(mappedBy = "itens", fetch = FetchType.LAZY)
-	private Collection<Pedido> pedidos;
-	
-	public Collection<Pedido> getPedidos() {
-		return pedidos;
-	}
 
-	public void setPedidos(Collection<Pedido> pedidos) {
-		this.pedidos = pedidos;
-	}
+	
 
-	public Collection<Combo> getCombos() {
-		return combos;
-	}
-
-	public void setCombos(Collection<Combo> combos) {
-		this.combos = combos;
-	}
 
 	public String getTitulo() {
 		return titulo;
@@ -85,13 +64,6 @@ public class ItemCardapio extends Base{
 		this.tipoItem = tipoItem;
 	}
 
-	public Collection<Restaurante> getRestaurantes() {
-		return restaurantes;
-	}
-
-	public void setRestaurantes(Collection<Restaurante> restaurantes) {
-		this.restaurantes = restaurantes;
-	}
 
 	
 }
