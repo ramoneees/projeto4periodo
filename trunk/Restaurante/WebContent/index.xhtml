@@ -1,23 +1,39 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:h="http://java.sun.com/jsf/html"
-xmlns:f="http://java.sun.com/jsf/core"
-xmlns:p="http://primefaces.org/ui">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Insert title here</title>
 </h:head>
 <h:body>
-<h:form>
- <p:messages id="messages" showDetail="true" autoUpdate="true"  closable="true" />
-<p:outputLabel for="login" value="Login:" />
-<h:inputText id="login" value="#{loginBean.login}" /> <br/>
-<p:outputLabel for="senha" value="Senha:" />
-<h:inputSecret id="senha" value="#{loginBean.senha}" /> <br/>
-<p:commandButton action="#{loginBean.efetuarLogin}" value="Entrar" />
-</h:form>
-
+	<h:form>
+		<p:messages id="messages" showDetail="true" autoUpdate="true" />
+		<h:panelGrid columns="2" width="350">
+			
+			<p:column>
+				<h:outputText value="Login:"></h:outputText>
+			</p:column>
+			<p:column>
+				<p:inputText id="login" value="#{loginBean.login}" tabindex="1"
+					requiredMessage="#{msgs['msg.login.obrigatorio']}" required="true"
+					autocomplete="false"></p:inputText>
+			</p:column>
+			<p:column>
+				<h:outputText value="Senha:"></h:outputText>:</p:column>
+			<p:column>
+				<p:password id="senha" value="#{loginBean.senha}" tabindex="2"
+					requiredMessage="#{msgs['msg.senha.obrigatorio']}" required="true"
+					autocomplete="false"></p:password>
+			</p:column>
+			<p:column>
+			<p:commandButton value="Entrar" action="#{loginBean.efetuarLogin}" />
+			
+			</p:column>
+	</h:panelGrid>
+	</h:form>
 
 
 </h:body>

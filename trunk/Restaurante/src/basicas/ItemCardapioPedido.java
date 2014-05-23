@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class ItemPedido extends Base {
+public class ItemCardapioPedido extends Base {
 
 	@ManyToOne
 	private Pedido pedido;

@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:h="http://java.sun.com/jsf/html"
-xmlns:f="http://java.sun.com/jsf/core"
-xmlns:p="http://primefaces.org/ui">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
-</head>
-<body>
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title><ui:insert name="titulo"></ui:insert></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+</h:head>
+<h:body>
+		<p:fieldset legend="Restaurante do Chico">
+			<div class="ui-widget">
+				<ui:include src="menu_principal.xhtml"></ui:include>
+			</div>
+			<div class="ui-widget" style="height: 800px">
+				<ui:insert name="principal" />
+			</div>
+			<div class="ui-widget" style="height: 25px; text-align: right">
+				Todos os direitos Reservados</div>
+		</p:fieldset>
 
-</body>
+</h:body>
+
 </html>

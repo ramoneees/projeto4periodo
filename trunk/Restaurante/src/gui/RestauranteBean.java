@@ -21,6 +21,14 @@ public class RestauranteBean {
 	private Usuario usuarioLogado;
 
 
+	public Usuario getUsuarioLogado() {
+		return usuarioLogado;
+	}
+
+	public void setUsuarioLogado(Usuario usuarioLogado) {
+		this.usuarioLogado = usuarioLogado;
+	}
+
 	public List<Restaurante> getLista() {
 		try {
 			this.lista = fachada.consultarTodosRestaurante();
