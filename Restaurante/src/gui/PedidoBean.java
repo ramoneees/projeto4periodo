@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
 import basicas.ItemCardapio;
+import basicas.ItemCardapioPedido;
 import basicas.Mesa;
 import basicas.Pedido;
 import basicas.Usuario;
@@ -31,6 +32,16 @@ public class PedidoBean {
 	float valorTotal;
 	@ManagedProperty("#{loginBean.usuarioLogado}")
 	private Usuario usuarioLogado;
+	
+	private ItemCardapioPedido itemcardPedido = new ItemCardapioPedido();
+
+	public ItemCardapioPedido getItemcardPedido() {
+		return itemcardPedido;
+	}
+
+	public void setItemcardPedido(ItemCardapioPedido itemcardPedido) {
+		this.itemcardPedido = itemcardPedido;
+	}
 
 	public List<Pedido> getPedidos() {
 		return pedidos;
@@ -136,11 +147,16 @@ public class PedidoBean {
 	public String adicionarItens() {
 		try {
 			item = fachada.consultarItemPorId(idItem);
-			itens.add(item);
-
+			mesa = fachada.consultarPorMesaId(mesaId);
+			//itens.add(item);
 			pedido.setUsuario(usuarioLogado);
+			pedido.setMesa(mesa);
+			
+			itemcardPedido.setItem(item);
+			itemcardPedido.setPedido(pedido);
 			
 			fachada.inserir(pedido);
+			
 			item = new ItemCardapio();
 
 		} catch (Exception e) {
@@ -148,7 +164,7 @@ public class PedidoBean {
 			e.printStackTrace();
 		}
 
-		return "efetuar_pedido.xhtml";
+		return null;
 
 	}
 	
@@ -161,7 +177,7 @@ public class PedidoBean {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return "efetuar_pedido.xhtml";
 		
 	}
 
