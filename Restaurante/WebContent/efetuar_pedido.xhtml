@@ -10,6 +10,9 @@
 </h:head>
 <h:body>
 
+
+
+
 	<h:form>
 		
 		<p:selectOneMenu  value="#{pedidoBean.idItem}">
@@ -21,11 +24,29 @@
 			<f:selectItem noSelectionOption="true" itemLabel="Selecione uma mesa"></f:selectItem>
 			<f:selectItems var="mesa" value="#{pedidoBean.listaMesa}" itemValue="#{mesa.id}" itemLabel="#{mesa.id}"/>
 		</p:selectOneMenu>
-
+		<p:commandButton value="Adicionar Item"
+			action="#{pedidoBean.adicionarItens}" />
 		<p:commandButton value="Adicionar Item" update="tabPedido"
 			action="#{pedidoBean.adicionarItens}">
 			
 			</p:commandButton>
+
+<!-- 		<p:dataTable var="item" value="#{pedidoBean.itens}" emptyMessage="nenhum item adicionado">
+
+			<p:column headerText="id">
+				<h:outputText value="#{item.id}" />
+			</p:column>
+
+			<p:column headerText="Titulo">
+				<h:outputText value="#{item.titulo}" />
+			</p:column>
+
+			<p:column headerText="Preço">
+				<h:outputText value="#{item.preco}" />
+			</p:column>
+
+		</p:dataTable>
+ -->
 
 
 		<p:dataTable var="pedido" value="#{pedidoBean.pedidos}" emptyMessage="nenhum item adicionado" id="tabPedido">
@@ -45,6 +66,7 @@
 		</p:dataTable>
 
 	</h:form>
+
 
 </h:body>
 </html>
