@@ -8,15 +8,23 @@
 
 	<ui:define name="titulo">Selecionar a Mesa</ui:define>
 
-	<p:outputLabel for="selectMesa">Selecione a mesa para adicionar o pedido</p:outputLabel>
-	<ui:define name="principal">
-		<p:selectOneMenu  id="selectMesa" value="#{pedidoBean.mesaId}">
-			<f:selectItem noSelectionOption="true" itemLabel="Selecione uma mesa"></f:selectItem>
-			<f:selectItems var="mesa" value="#{pedidoBean.listaMesa}"
-				itemValue="#{mesa.id}" itemLabel="#{mesa.id}" />
-		</p:selectOneMenu>
-	
 
+
+	<ui:define name="principal">
+
+		<h:form>
+			<p:outputLabel for="selectMesa">Selecione a mesa para adicionar o pedido</p:outputLabel>
+			<p:selectOneMenu id="selectMesa" value="#{pedidoBean.mesaId}">
+				<f:selectItem noSelectionOption="true"
+					itemLabel="Selecione uma mesa"></f:selectItem>
+				<f:selectItems var="mesa" value="#{pedidoBean.listaMesa}"
+					itemValue="#{mesa.id}" itemLabel="#{mesa.id}" />
+			</p:selectOneMenu>
+
+			<p:commandButton value="continuar"
+				action="#{pedidoBean.escolherMesa}" />
+
+		</h:form>
 	</ui:define>
 
 </ui:composition>
