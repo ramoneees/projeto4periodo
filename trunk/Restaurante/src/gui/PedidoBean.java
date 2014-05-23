@@ -139,8 +139,7 @@ public class PedidoBean {
 			itens.add(item);
 
 			pedido.setUsuario(usuarioLogado);
-			pedido.setMesa(fachada.consultarPorMesaId(mesaId));
-
+			
 			fachada.inserir(pedido);
 			item = new ItemCardapio();
 
@@ -149,8 +148,21 @@ public class PedidoBean {
 			e.printStackTrace();
 		}
 
-		return null;
+		return "efetuar_pedido.xhtml";
 
+	}
+	
+	
+	public String escolherMesa(){
+		
+		try {
+			pedido.setMesa(fachada.consultarPorMesaId(mesaId));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+		
 	}
 
 	public void efetuarPedido() {
