@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="templates/template.xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
 xmlns:h="http://java.sun.com/jsf/html"
 xmlns:f="http://java.sun.com/jsf/core"
 xmlns:p="http://primefaces.org/ui">
-<h:head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Gerenciamento de Clientes</title>
+<ui:define name="Titulo">Gerenciamento de Clientes</ui:define>
 
-</h:head>
 
-<h:body>
+
+<ui:define name="principal">
 <h1>Gerenciamento de Clientes</h1>
 
 <p:panelGrid id="painelCliente" border="1" columns="2">
@@ -71,6 +72,6 @@ Dados do Cliente
 </h:form>
 
 
-</h:body>
+</ui:define>
 
-</html>
+</ui:composition>

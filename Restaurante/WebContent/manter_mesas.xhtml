@@ -1,62 +1,66 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="templates/template.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Insert title here</title>
-</h:head>
 
-<h:body>
+	<ui:define name="titulo">Gerenciamento de mesas</ui:define>
 
 
+	<ui:define name="principal">
+		<h:form>
+			<h:messages></h:messages>
+			<h:inputHidden value="#{mesaBean.mesa.id}" />
+			<br />
+			<br />
+			<label>N° de lugares na mesa:</label>
+			<p:inputText value="#{mesaBean.mesa.qtd}" label="QtdMax" />
+			<br />
+			<br />
+			<p:selectOneMenu value="#{mesaBean.restauranteId}">
+				<f:selectItem noSelectionOption="true"
+					itemLabel="Selecione um restaurante"></f:selectItem>
+				<f:selectItems var="rest" value="#{mesaBean.listaRest}"
+					itemValue="#{rest.id}" itemLabel="#{rest.nome}" />
+			</p:selectOneMenu>
 
-<h:form>
-<h:messages></h:messages>
-<h:inputHidden value="#{mesaBean.mesa.id}" /><br/><br/>
-<label>N° de lugares na mesa:</label>
-<p:inputText value="#{mesaBean.mesa.qtd}" label="QtdMax" /><br/><br/>
-<p:selectOneMenu  value="#{mesaBean.restauranteId}">
-	<f:selectItem noSelectionOption="true" itemLabel="Selecione um restaurante"></f:selectItem>
-	<f:selectItems var="rest" value="#{mesaBean.listaRest}" itemValue="#{rest.id}" itemLabel="#{rest.nome}"/>
-</p:selectOneMenu>
+			<p:commandButton action="#{mesaBean.salvarMesa}" value="Salvar"
+				ajax="false" />
 
-<p:commandButton action="#{mesaBean.salvarMesa}" value="Salvar" ajax="false"/>
-
-</h:form>
-
-
-<h:form>
-		<p:dataTable var="mesa" value="#{mesaBean.lista}">
-			<p:column headerText="Id">
-				<p:commandLink action="#{mesaBean.exibir(mesa)}"
-					value="#{mesa.id}" />
-			</p:column>
-
-			
-			<p:column headerText="Qtd.Max de clientes">
-				<h:outputText value="#{mesa.qtd}" />
-			</p:column>
-
-			<p:column headerText="Restaurante">
-				<p:commandLink action="#{mesaBean.exibir(mesa)}"
-					value="#{mesa.restaurante.nome}" />
-			</p:column>
-
-			<p:column headerText="Excluir">
-				<p:commandLink action="#{mesaBean.remover(mesa)}" ajax="false">
-					<img src="imagens/lixo.png"  />
-				</p:commandLink>
-			</p:column>
+		</h:form>
 
 
-		</p:dataTable>
+		<h:form>
+			<p:dataTable var="mesa" value="#{mesaBean.lista}">
+				<p:column headerText="Id">
+					<p:commandLink action="#{mesaBean.exibir(mesa)}" value="#{mesa.id}" />
+				</p:column>
 
 
-</h:form>
+				<p:column headerText="Qtd.Max de clientes">
+					<h:outputText value="#{mesa.qtd}" />
+				</p:column>
 
-</h:body>
+				<p:column headerText="Restaurante">
+					<p:commandLink action="#{mesaBean.exibir(mesa)}"
+						value="#{mesa.restaurante.nome}" />
+				</p:column>
 
-</html>
+				<p:column headerText="Excluir">
+					<p:commandLink action="#{mesaBean.remover(mesa)}" ajax="false">
+						<img src="imagens/lixo.png" />
+					</p:commandLink>
+				</p:column>
+
+
+			</p:dataTable>
+
+
+		</h:form>
+
+
+
+	</ui:define>
+</ui:composition>

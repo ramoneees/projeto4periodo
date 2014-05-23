@@ -56,7 +56,7 @@ public class LoginBean {
 		try {
 			System.out.println("teste");
 			usuarioLogado = fachada.efetuarLogin(login, senha);
-			return "menu.xhtml?faces-redirect=true";
+			return "home.xhtml?faces-redirect=true";
 		} catch (LoginInvalidoException e) {
 		
 
