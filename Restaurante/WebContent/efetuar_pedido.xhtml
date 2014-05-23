@@ -22,6 +22,10 @@
 			<p:inputText label="" value="#{pedidoBean.itemcardPedido.qtd}"/> <br></br>
 
 			<br></br>
+			<p:commandButton value="Iniciar Pedido" action="#{pedidoBean.iniciarPedido}"/>
+
+			
+			
 			<p:commandButton value="Adicionar Item" update="tabPedido"
 				action="#{pedidoBean.adicionarItens}">
 

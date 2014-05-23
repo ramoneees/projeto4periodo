@@ -27,13 +27,11 @@ public class PedidoBean {
 	private IFachada fachada = new Fachada();
 	private List<Mesa> listaMesa = new ArrayList<Mesa>();
 	private Mesa mesa = new Mesa();
-	
 	private Integer mesaId;
 	private int idItem;
 	float valorTotal;
 	@ManagedProperty("#{loginBean.usuarioLogado}")
 	private Usuario usuarioLogado;
-	
 	private ItemCardapioPedido itemcardPedido = new ItemCardapioPedido();
 
 	public ItemCardapioPedido getItemcardPedido() {
@@ -144,22 +142,36 @@ public class PedidoBean {
 	public void setValorTotal(float valorTotal) {
 		this.valorTotal = valorTotal;
 	}
+	
+	public void iniciarPedido(){
+		
+		try {
+			mesa = fachada.consultarPorMesaId(mesaId);
+			pedido.setUsuario(usuarioLogado);
+			pedido.setMesa(mesa);
+			fachada.inserir(pedido);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//itens.add(item);
+		
+		
+		
+	}
 
 	public String adicionarItens() {
 		try {
 			item = fachada.consultarItemPorId(idItem);
-			mesa = fachada.consultarPorMesaId(mesaId);
-			//itens.add(item);
-			pedido.setUsuario(usuarioLogado);
-			pedido.setMesa(mesa);
 			
 			itemcardPedido.setItem(item);
 			itemcardPedido.setPedido(pedido);
 			
-			fachada.inserir(pedido);
+	
 			fachada.inserir(itemcardPedido);
 			
 			item = new ItemCardapio();
+			itemcardPedido = new ItemCardapioPedido();
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
