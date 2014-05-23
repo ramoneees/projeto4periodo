@@ -2,8 +2,10 @@ package basicas;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQuery(name="consultarPedidoporMesa", query="Select u from Usuario u where u.login = :log and u.senha = :sen")
 public class ItemCardapioPedido extends Base {
 
 	@ManyToOne

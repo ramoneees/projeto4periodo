@@ -11,6 +11,7 @@ import basicas.ItemCardapio;
 import basicas.ItemCardapioPedido;
 import basicas.Mesa;
 import basicas.Pedido;
+import basicas.StatusPedido;
 import basicas.Usuario;
 import fachada.Fachada;
 import fachada.IFachada;
@@ -33,6 +34,7 @@ public class PedidoBean {
 	@ManagedProperty("#{loginBean.usuarioLogado}")
 	private Usuario usuarioLogado;
 	private ItemCardapioPedido itemcardPedido = new ItemCardapioPedido();
+	private StatusPedido status;
 
 	public ItemCardapioPedido getItemcardPedido() {
 		return itemcardPedido;
@@ -142,34 +144,41 @@ public class PedidoBean {
 	public void setValorTotal(float valorTotal) {
 		this.valorTotal = valorTotal;
 	}
-	
-	public void iniciarPedido(){
-		
+
+	public void iniciarPedido() {
+
 		try {
-			mesa = fachada.consultarPorMesaId(mesaId);
-			pedido.setUsuario(usuarioLogado);
-			pedido.setMesa(mesa);
-			fachada.inserir(pedido);
+			if (pedido.getMesa().getId() == mesaId) {
+				if (pedido.getStatus() == status.ABERTO) {
+
+					throw new Exception("Mesa encontra-se com pedido aberto");
+				} else {
+
+					mesa = fachada.consultarPorMesaId(mesaId);
+					pedido.setUsuario(usuarioLogado);
+					pedido.setStatus(status.ABERTO);
+					pedido.setMesa(mesa);
+					fachada.inserir(pedido);
+				}
+			}
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//itens.add(item);
-		
-		
-		
+		// itens.add(item);
+
 	}
 
 	public String adicionarItens() {
 		try {
 			item = fachada.consultarItemPorId(idItem);
-			
+
 			itemcardPedido.setItem(item);
 			itemcardPedido.setPedido(pedido);
-			
-	
+
 			fachada.inserir(itemcardPedido);
-			
+
 			item = new ItemCardapio();
 			itemcardPedido = new ItemCardapioPedido();
 
@@ -181,10 +190,9 @@ public class PedidoBean {
 		return null;
 
 	}
-	
-	
-	public String escolherMesa(){
-		
+
+	public String escolherMesa() {
+
 		try {
 			pedido.setMesa(fachada.consultarPorMesaId(mesaId));
 		} catch (Exception e) {
@@ -192,7 +200,7 @@ public class PedidoBean {
 			e.printStackTrace();
 		}
 		return "efetuar_pedido.xhtml";
-		
+
 	}
 
 	public void efetuarPedido() {
