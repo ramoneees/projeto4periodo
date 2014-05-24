@@ -1,7 +1,10 @@
 package basicas;
 
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 
 
@@ -13,6 +16,18 @@ public class Mesa extends Base{
 	@ManyToOne
 	private Restaurante restaurante;
 	
+	@OneToMany(mappedBy="mesa")
+	private Collection<Pedido> pedidos;
+	
+
+	public Collection<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(Collection<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+
 	public Mesa(){
 		
 		this.restaurante = new Restaurante();
