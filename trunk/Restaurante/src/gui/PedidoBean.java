@@ -165,7 +165,9 @@ public class PedidoBean {
 			fachada.inserir(itemcardPedido);
 			itensPedidos.add(itemcardPedido);
 
-			
+			for (int i = 0; i < itensPedidos.size(); i++) {
+				valorTotal = valorTotal + itensPedidos.get(i).getItem().getPreco() * itensPedidos.get(i).getQtd();
+			}
 			item = new ItemCardapio();
 			itemcardPedido = new ItemCardapioPedido();
 
@@ -219,9 +221,6 @@ public class PedidoBean {
 
 		try {
 
-			for (int i = 0; i < itensPedidos.size(); i++) {
-				valorTotal = valorTotal + itensPedidos.get(i).getItem().getPreco();
-			}
 			pedido.setUsuario(usuarioLogado);
 			pedido.setStatus(status.FECHADO);
 			pedido.setValorTotal(valorTotal);
