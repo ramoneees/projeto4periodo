@@ -6,9 +6,11 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 
 
 @Entity
+@NamedQuery(name="consultarPedidoAbertoporMesa", query="Select p from  Pedido p where p.mesa.id = :id and p.status = :status")
 public class Pedido extends Base{
 
 	@Enumerated(EnumType.STRING)
