@@ -86,4 +86,8 @@ public interface IFachada {
 	public void inserir(ItemCardapioPedido itemCardPed) throws Exception;
 
 	public Pedido consultarPedidoAbertoporMesa(int mesaId, StatusPedido status) throws Exception;
+
+	public List<ItemCardapioPedido> consultaritemPedido(int idPedido) throws Exception;
+
+	public void encerrarPedido(Pedido p );
 }

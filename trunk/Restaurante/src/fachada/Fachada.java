@@ -244,5 +244,17 @@ public class Fachada implements IFachada {
 		return pedidoNegocio.consultarPedidoAbertoPorMesa(mesaId, status);
 	}
 
+	@Override
+	public List<ItemCardapioPedido> consultaritemPedido(int idPedido) throws Exception {
+		// 
+		return itemPedido.consultaritemPedido(idPedido);
+	}
+
+	@Override
+	public void encerrarPedido(Pedido p) {
+		pedidoNegocio.encerrarPedido(p);
+		
+	}
+
 	
 }
