@@ -24,7 +24,7 @@
 
 			<br></br>
 
-			<p:commandButton value="Adicionar Item" update="tabPedido"
+			<p:commandButton value="Adicionar Item" update="tabPedido valor" 
 				action="#{pedidoBean.adicionarItens}">
 
 			</p:commandButton>
@@ -68,7 +68,7 @@
 				</p:column>
 				
 			</p:dataTable>
-		<h:outputText value="Valor Total: #{pedidoBean.pedido.valorTotal}"/>
+		<h:outputText  id="valor" value="Valor Total: #{pedidoBean.pedido.valorTotal}" />
 		</h:form>
 
 
