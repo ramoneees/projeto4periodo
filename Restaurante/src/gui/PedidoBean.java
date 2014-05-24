@@ -145,9 +145,14 @@ public class PedidoBean {
 		this.valorTotal = valorTotal;
 	}
 
-
 	public String adicionarItens() {
 		try {
+			mesa = fachada.consultarPorMesaId(mesaId);
+
+			for (int i = 0; i < mesa.getPedidos().size(); i++) {
+				pedido = (Pedido) mesa.getPedidos();
+			}
+
 			item = fachada.consultarItemPorId(idItem);
 
 			itemcardPedido.setItem(item);
@@ -170,17 +175,22 @@ public class PedidoBean {
 	public String escolherMesa() {
 
 		try {
-			
-			pedido = fachada.consultarPedidoAbertoporMesa(mesaId, status.ABERTO);
-			
+
+			// pedido = fachada.pesquisarPedidoAbertoPorMesa(mesaId);
+			pedido.setMesa(fachada.consultarPorMesaId(mesaId));
+
+			pedido = fachada
+					.consultarPedidoAbertoporMesa(mesaId, status.ABERTO);
+
 			if (pedido == null) {
-				
+
 				mesa = fachada.consultarPorMesaId(mesaId);
 				pedido.setUsuario(usuarioLogado);
 				pedido.setStatus(status.ABERTO);
 				pedido.setMesa(mesa);
 				fachada.inserir(pedido);
 			}
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
