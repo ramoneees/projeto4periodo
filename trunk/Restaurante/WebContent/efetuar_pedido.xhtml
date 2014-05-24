@@ -10,6 +10,7 @@
 
 	<ui:define name="principal">
 
+		
 		<h:form>
 
 			<p:selectOneMenu value="#{pedidoBean.idItem}">
@@ -24,15 +25,16 @@
 
 			<br></br>
 
-			<p:commandButton value="Adicionar Item" update="tabPedido valor" 
+			<p:commandButton value="Adicionar Item" update="tabPedido valor"
 				action="#{pedidoBean.adicionarItens}">
 
 			</p:commandButton>
 
-			<p:commandButton action="#{pedidoBean.encerrarPedido}" value="Encerrar Conta">
-
+			<p:commandButton action="#{pedidoBean.encerrarPedido}"
+				value="Encerrar Conta">
+				
 			</p:commandButton>
-
+			<h:outputText value="Mesa #{pedidoBean.mesa.id}" />
 
 			<!-- 		<p:dataTable var="item" value="#{pedidoBean.itens}" emptyMessage="nenhum item adicionado">
 
@@ -62,13 +64,14 @@
 				<p:column headerText="Preço">
 					<h:outputText value="#{pedido.item.preco}" />
 				</p:column>
-				
+
 				<p:column headerText="Quantidade">
 					<h:outputText value="#{pedido.qtd}" />
 				</p:column>
-				
+
 			</p:dataTable>
-		<h:outputText  id="valor" value="Valor Total: #{pedidoBean.pedido.valorTotal}" />
+			<h:outputText id="valor"
+				value="Valor Total: #{pedidoBean.pedido.valorTotal}" />
 		</h:form>
 
 
