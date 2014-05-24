@@ -217,7 +217,7 @@ public class PedidoBean {
 		this.status = status;
 	}
 
-	public void encerrarPedido() {
+	public String encerrarPedido() {
 
 		try {
 
@@ -225,12 +225,21 @@ public class PedidoBean {
 			pedido.setStatus(status.FECHADO);
 			pedido.setValorTotal(valorTotal);
 			fachada.encerrarPedido(pedido);;
-			itensPedidos = new ArrayList<ItemCardapioPedido>();
-
+			//itensPedidos = new ArrayList<ItemCardapioPedido>();
+			return "encerrar_pedido.xhtml";
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return null;
+		} 
+	
+	public String finalizar(){
+		
+		itensPedidos = new ArrayList<ItemCardapioPedido>();
+		return"home.xhtml";
+	
+		
 
 	}
 }

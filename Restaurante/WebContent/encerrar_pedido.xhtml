@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="templates/template.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo"></ui:define>
+
+	<ui:define name="principal">
+
+		<h:form>
+		
+			<p:dataTable var="pedido" value="#{pedidoBean.itensPedidos}">
+				<p:column headerText="Item">
+					<h:outputText value="#{pedido.item.titulo}" />
+				</p:column>
+				<p:column headerText="Preco">
+					<h:outputText value="#{pedido.item.preco}" />
+				</p:column>
+
+				<p:column headerText="Quantidade">
+					<h:outputText value="#{pedido.qtd}" />
+				</p:column>
+
+			</p:dataTable>
+			<h:outputText value="Valor Total: #{pedidoBean.valorTotal}" />
+			<p:commandButton value="Finalizar" action="#{pedidoBean.finalizar}" />
+
+		</h:form>
+
+
+	</ui:define>
+
+</ui:composition>
