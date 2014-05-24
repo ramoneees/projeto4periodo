@@ -6,7 +6,7 @@ import javax.persistence.NamedQuery;
 
 @Entity
 
-public class ItemCardapioPedido extends Base {
+public class ItemCardapioPedido{
 
 	@ManyToOne
 	private Pedido pedido;

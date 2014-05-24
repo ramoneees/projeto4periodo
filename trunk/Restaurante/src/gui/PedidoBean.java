@@ -147,17 +147,11 @@ public class PedidoBean {
 
 	public String adicionarItens() {
 		try {
-			mesa = fachada.consultarPorMesaId(mesaId);
-
-			for (int i = 0; i < mesa.getPedidos().size(); i++) {
-				pedido = (Pedido) mesa.getPedidos();
-			}
-
+			//mesa = fachada.consultarPorMesaId(mesaId);
 			item = fachada.consultarItemPorId(idItem);
 
 			itemcardPedido.setItem(item);
 			itemcardPedido.setPedido(pedido);
-
 			fachada.inserir(itemcardPedido);
 
 			item = new ItemCardapio();
@@ -177,14 +171,13 @@ public class PedidoBean {
 		try {
 
 			// pedido = fachada.pesquisarPedidoAbertoPorMesa(mesaId);
-			pedido.setMesa(fachada.consultarPorMesaId(mesaId));
-
-			pedido = fachada
-					.consultarPedidoAbertoporMesa(mesaId, status.ABERTO);
+			//pedido.setMesa(fachada.consultarPorMesaId(mesaId));
+			pedido = fachada.consultarPedidoAbertoporMesa(mesaId, status.ABERTO);
 
 			if (pedido == null) {
-
+				
 				mesa = fachada.consultarPorMesaId(mesaId);
+				pedido = new Pedido();
 				pedido.setUsuario(usuarioLogado);
 				pedido.setStatus(status.ABERTO);
 				pedido.setMesa(mesa);
