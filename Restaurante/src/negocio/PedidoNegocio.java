@@ -14,7 +14,7 @@ public class PedidoNegocio {
 		dao.inserir(pedido);
 	}
 	
-	public Pedido consultarPedidoAbertoPorMesa(int mesaId, StatusPedido status){
+	public Pedido consultarPedidoAbertoPorMesa(int mesaId, StatusPedido status) throws Exception{
 		
 		return dao.consultarPedidoAbertoporMesa(mesaId, status);
 	}

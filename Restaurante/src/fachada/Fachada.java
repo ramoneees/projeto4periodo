@@ -239,7 +239,7 @@ public class Fachada implements IFachada {
 	}
 
 	@Override
-	public Pedido consultarPedidoAbertoporMesa(int mesaId, StatusPedido status) {
+	public Pedido consultarPedidoAbertoporMesa(int mesaId, StatusPedido status) throws Exception {
 		// TODO Auto-generated method stub
 		return pedidoNegocio.consultarPedidoAbertoPorMesa(mesaId, status);
 	}
