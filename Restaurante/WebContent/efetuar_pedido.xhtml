@@ -17,16 +17,22 @@
 				<f:selectItems var="lista" value="#{pedidoBean.itensLista}"
 					itemValue="#{lista.id}" itemLabel="#{lista.titulo}" />
 			</p:selectOneMenu>
-			
+
 			<label>Qtd :</label>
-			<p:inputText label="" value="#{pedidoBean.itemcardPedido.qtd}"/> <br></br>
+			<p:inputText label="" value="#{pedidoBean.itemcardPedido.qtd}" />
+			<br></br>
 
 			<br></br>
-			
+
 			<p:commandButton value="Adicionar Item" update="tabPedido"
 				action="#{pedidoBean.adicionarItens}">
 
 			</p:commandButton>
+
+			<p:commandButton action="#{pedidoBean.encerrarPedido}" value="Encerrar Conta">
+
+			</p:commandButton>
+
 
 			<!-- 		<p:dataTable var="item" value="#{pedidoBean.itens}" emptyMessage="nenhum item adicionado">
 
@@ -46,21 +52,21 @@
  -->
 
 
-			<p:dataTable var="pedido" value="#{pedidoBean.pedidos}"
+			<p:dataTable var="pedido" value="#{pedidoBean.itensPedidos}"
 				emptyMessage="nenhum item adicionado" id="tabPedido">
 
 				<p:column headerText="Titulo">
-					<h:outputText value="#{pedido.itens.titulo}" />
+					<h:outputText value="#{pedido.item.titulo}" />
 				</p:column>
 
 				<p:column headerText="Preço">
-					<h:outputText value="#{pedido.itens.preco}" />
+					<h:outputText value="#{pedido.item.preco}" />
 				</p:column>
-
-				<p:column headerText="Mesa">
-					<h:outputText value="#{pedido.mesa.id}" />
+				
+				<p:column headerText="Quantidade">
+					<h:outputText value="#{pedido.qtd}" />
 				</p:column>
-
+				
 			</p:dataTable>
 
 		</h:form>

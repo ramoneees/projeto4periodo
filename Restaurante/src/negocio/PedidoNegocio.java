@@ -18,5 +18,9 @@ public class PedidoNegocio {
 		
 		return dao.consultarPedidoAbertoporMesa(mesaId, status);
 	}
+	public void encerrarPedido(Pedido p){
+		
+		dao.alterar(p);
+	}
 	
 }

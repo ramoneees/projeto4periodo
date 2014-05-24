@@ -59,7 +59,6 @@ public class LoginBean {
 			return "home.xhtml?faces-redirect=true";
 		} catch (LoginInvalidoException e) {
 		
-
 			 FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Login/Senha Incorretos"));
 

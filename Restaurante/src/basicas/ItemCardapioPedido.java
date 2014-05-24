@@ -6,6 +6,7 @@ import javax.persistence.NamedQuery;
 
 @Entity
 
+@NamedQuery(name="consultarItensPedido", query = "Select i from ItemCardapioPedido i where i.pedido.id = :id")
 public class ItemCardapioPedido extends Base {
 
 	@ManyToOne

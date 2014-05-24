@@ -4,7 +4,6 @@ import javax.persistence.TypedQuery;
 
 import basicas.Pedido;
 import basicas.StatusPedido;
-import basicas.Usuario;
 import DAO.DAOGenerico;
 
 public class PedidoDAO extends DAOGenerico<Pedido> implements IPedidoDAO {

@@ -27,10 +27,12 @@ public class PedidoBean {
 	private ItemCardapio item = new ItemCardapio();
 	private IFachada fachada = new Fachada();
 	private List<Mesa> listaMesa = new ArrayList<Mesa>();
+	private List<ItemCardapioPedido> itensPedidos =  new ArrayList<ItemCardapioPedido>();
 	private Mesa mesa = new Mesa();
 	private Integer mesaId;
 	private int idItem;
 	float valorTotal;
+	
 	@ManagedProperty("#{loginBean.usuarioLogado}")
 	private Usuario usuarioLogado;
 	private ItemCardapioPedido itemcardPedido = new ItemCardapioPedido();
@@ -42,6 +44,14 @@ public class PedidoBean {
 
 	public void setItemcardPedido(ItemCardapioPedido itemcardPedido) {
 		this.itemcardPedido = itemcardPedido;
+	}
+
+	public List<ItemCardapioPedido> getItensPedidos() {
+		return itensPedidos;
+	}
+
+	public void setItensPedidos(List<ItemCardapioPedido> itensPedidos) {
+		this.itensPedidos = itensPedidos;
 	}
 
 	public List<Pedido> getPedidos() {
@@ -147,13 +157,15 @@ public class PedidoBean {
 
 	public String adicionarItens() {
 		try {
-			//mesa = fachada.consultarPorMesaId(mesaId);
+			// mesa = fachada.consultarPorMesaId(mesaId);
 			item = fachada.consultarItemPorId(idItem);
 
 			itemcardPedido.setItem(item);
 			itemcardPedido.setPedido(pedido);
 			fachada.inserir(itemcardPedido);
+			itensPedidos.add(itemcardPedido);
 
+			
 			item = new ItemCardapio();
 			itemcardPedido = new ItemCardapioPedido();
 
@@ -162,7 +174,7 @@ public class PedidoBean {
 			e.printStackTrace();
 		}
 
-		return null;
+		return "efetuar_pedido.xhtml";
 
 	}
 
@@ -171,17 +183,20 @@ public class PedidoBean {
 		try {
 
 			// pedido = fachada.pesquisarPedidoAbertoPorMesa(mesaId);
-			//pedido.setMesa(fachada.consultarPorMesaId(mesaId));
+			// pedido.setMesa(fachada.consultarPorMesaId(mesaId));
 			pedido = fachada.consultarPedidoAbertoporMesa(mesaId, status.ABERTO);
 
 			if (pedido == null) {
-				
+
 				mesa = fachada.consultarPorMesaId(mesaId);
 				pedido = new Pedido();
 				pedido.setUsuario(usuarioLogado);
 				pedido.setStatus(status.ABERTO);
 				pedido.setMesa(mesa);
 				fachada.inserir(pedido);
+			} else {
+
+				itensPedidos =  fachada.consultaritemPedido(pedido.getId());
 			}
 
 		} catch (Exception e) {
@@ -200,17 +215,18 @@ public class PedidoBean {
 		this.status = status;
 	}
 
-	public void efetuarPedido() {
+	public void encerrarPedido() {
 
 		try {
 
-			for (int i = 0; i < itens.size(); i++) {
-				valorTotal = valorTotal + itens.get(i).getPreco();
+			for (int i = 0; i < itensPedidos.size(); i++) {
+				valorTotal = valorTotal + itensPedidos.get(i).getItem().getPreco();
 			}
 			pedido.setUsuario(usuarioLogado);
-
+			pedido.setStatus(status.FECHADO);
 			pedido.setValorTotal(valorTotal);
-			fachada.inserir(pedido);
+			fachada.encerrarPedido(pedido);;
+			itensPedidos = new ArrayList<ItemCardapioPedido>();
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

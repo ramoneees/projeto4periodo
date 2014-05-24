@@ -2,10 +2,11 @@ package basicas;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.NamedQuery;
 
 
 
-@Entity
+@Entity 
 public class ItemCardapio extends Base{
 
 	private String titulo;
@@ -16,10 +17,6 @@ public class ItemCardapio extends Base{
 	@Enumerated(EnumType.STRING)
 	private TipoItem tipoItem;
 	
-
-	
-
-
 	public String getTitulo() {
 		return titulo;
 	}
