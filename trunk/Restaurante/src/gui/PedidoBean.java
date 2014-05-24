@@ -145,30 +145,6 @@ public class PedidoBean {
 		this.valorTotal = valorTotal;
 	}
 
-	public void iniciarPedido() {
-
-		try {
-			if (pedido.getMesa().getId() == mesaId) {
-				if (pedido.getStatus() == status.ABERTO) {
-
-					throw new Exception("Mesa encontra-se com pedido aberto");
-				} else {
-
-					mesa = fachada.consultarPorMesaId(mesaId);
-					pedido.setUsuario(usuarioLogado);
-					pedido.setStatus(status.ABERTO);
-					pedido.setMesa(mesa);
-					fachada.inserir(pedido);
-				}
-			}
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		// itens.add(item);
-
-	}
 
 	public String adicionarItens() {
 		try {
@@ -194,13 +170,31 @@ public class PedidoBean {
 	public String escolherMesa() {
 
 		try {
-			pedido.setMesa(fachada.consultarPorMesaId(mesaId));
+			
+			pedido = fachada.consultarPedidoAbertoporMesa(mesaId, status.ABERTO);
+			
+			if (pedido == null) {
+				
+				mesa = fachada.consultarPorMesaId(mesaId);
+				pedido.setUsuario(usuarioLogado);
+				pedido.setStatus(status.ABERTO);
+				pedido.setMesa(mesa);
+				fachada.inserir(pedido);
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return "efetuar_pedido.xhtml";
 
+	}
+
+	public StatusPedido getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusPedido status) {
+		this.status = status;
 	}
 
 	public void efetuarPedido() {

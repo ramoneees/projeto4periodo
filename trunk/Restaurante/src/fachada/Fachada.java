@@ -18,6 +18,7 @@ import basicas.ItemCardapioPedido;
 import basicas.Mesa;
 import basicas.Pedido;
 import basicas.Restaurante;
+import basicas.StatusPedido;
 import basicas.Usuario;
 
 public class Fachada implements IFachada {
@@ -235,6 +236,12 @@ public class Fachada implements IFachada {
 	public void inserir(ItemCardapioPedido itemCardPed) throws Exception {
 		itemPedido.inserir(itemCardPed);
 		
+	}
+
+	@Override
+	public Pedido consultarPedidoAbertoporMesa(int mesaId, StatusPedido status) {
+		// TODO Auto-generated method stub
+		return pedidoNegocio.consultarPedidoAbertoPorMesa(mesaId, status);
 	}
 
 	

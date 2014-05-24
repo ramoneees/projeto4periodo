@@ -10,6 +10,7 @@ import basicas.ItemCardapioPedido;
 import basicas.Mesa;
 import basicas.Pedido;
 import basicas.Restaurante;
+import basicas.StatusPedido;
 import basicas.Usuario;
 
 
@@ -83,4 +84,6 @@ public interface IFachada {
 	public Usuario efetuarLogin(String login, String senha) throws LoginInvalidoException;
 	
 	public void inserir(ItemCardapioPedido itemCardPed) throws Exception;
+
+	public Pedido consultarPedidoAbertoporMesa(int mesaId, StatusPedido status);
 }
