@@ -10,13 +10,38 @@ public class ItemCardapioNegocio {
 
 	IItemCardapioDAO itemdao = new ItemCardapioDAO();
 
-	public void inserir(ItemCardapio item) {
+	public void inserir(ItemCardapio item) throws Exception {
 
+		if (item.getTitulo().trim() == "" ) {
+			throw new Exception("Informe o título do item");
+		}
+		if (item.getComposicao().trim() == "" ) {
+			throw new Exception("Informe a composição do item");
+		}
+		if (item.getTamanho().trim() == "" ) {
+			throw new Exception("Informe o tamanho do item");
+		}
+		if (item.getPreco() == 0) {
+			throw new Exception("Informe o preço do item");
+		}
 		itemdao.inserir(item);
 	}
 
-	public void alterar(ItemCardapio item) {
+	public void alterar(ItemCardapio item) throws Exception {
 
+		if (item.getTitulo().trim() == "" ) {
+			throw new Exception("Informe o título do item");
+		}
+		if (item.getComposicao().trim() == "" ) {
+			throw new Exception("Informe a composição do item");
+		}
+		if (item.getTamanho().trim() == "" ) {
+			throw new Exception("Informe o tamanho do item");
+		}
+		if (item.getPreco() == 0) {
+			throw new Exception("Informe o preço do item");
+		}
+		
 		itemdao.alterar(item);
 	}
 
