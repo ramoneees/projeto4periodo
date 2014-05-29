@@ -12,7 +12,7 @@
 
 		
 		<h:form>
-
+			<p:messages id="messages" showDetail="true" autoUpdate="true" />
 			<p:selectOneMenu value="#{pedidoBean.idItem}">
 				<f:selectItem noSelectionOption="true" itemLabel="Selecione um item"></f:selectItem>
 				<f:selectItems var="lista" value="#{pedidoBean.itensLista}"

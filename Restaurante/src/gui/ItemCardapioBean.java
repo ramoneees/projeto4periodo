@@ -2,8 +2,10 @@ package gui;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
 
 import basicas.ItemCardapio;
 import basicas.TipoItem;
@@ -20,27 +22,31 @@ public class ItemCardapioBean {
 	@ManagedProperty("#{loginBean.usuarioLogado}")
 	private Usuario usuarioLogado;
 
-	
-	
 	public Usuario getUsuarioLogado() {
 		return usuarioLogado;
 	}
+
 	public void setUsuarioLogado(Usuario usuarioLogado) {
 		this.usuarioLogado = usuarioLogado;
 	}
-	public TipoItem[]  getTipo() {
+
+	public TipoItem[] getTipo() {
 		return tipo.values();
 	}
+
 	public void setTipo(TipoItem tipo) {
 		this.tipo = tipo;
 	}
+
 	public ItemCardapio getItem() {
 		return item;
-		
+
 	}
+
 	public void setItem(ItemCardapio item) {
 		this.item = item;
 	}
+
 	public List<ItemCardapio> getLista() {
 		try {
 			lista = fachada.consultarTodosItem();
@@ -50,51 +56,48 @@ public class ItemCardapioBean {
 		}
 		return lista;
 	}
+
 	public void setLista(List<ItemCardapio> lista) {
 		this.lista = lista;
 	}
-	
-	public String salvar(){
-		
+
+	public String salvar() {
+
 		try {
-			if(item.getId() == 0){
+			if (item.getId() == 0) {
 				item.setUsuario(usuarioLogado);
 				fachada.inserir(item);
-			}else{
-				
+			} else {
+
 				fachada.alterar(item);
 				item = new ItemCardapio();
 			}
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		return "manter_item_cardapio.xhtml?faces-redirect=true";
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, null, e
+							.getMessage()));
 		}
-	
-	public String remover(ItemCardapio itemc){
-		
+		return "manter_item_cardapio.xhtml?faces-redirect=true";
+	}
+
+	public String remover(ItemCardapio itemc) {
+
 		try {
 			fachada.remover(itemc);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			FacesContext.getCurrentInstance().addMessage(
+					null,new FacesMessage(FacesMessage.SEVERITY_ERROR, null, e.getMessage()));
 			e.printStackTrace();
 		}
 		return "manter_item_cardapio.xhtml?faces-redirect=true";
-		
-		
+
 	}
-	
-	public String exibir(ItemCardapio i){
-		
+
+	public String exibir(ItemCardapio i) {
+
 		setItem(i);
 		return null;
 	}
-		
-		
-	}
-	
-	
-	
-	
 
+}

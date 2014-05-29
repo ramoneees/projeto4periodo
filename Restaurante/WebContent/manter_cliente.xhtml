@@ -1,77 +1,90 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition template="templates/template.xhtml"
-xmlns:ui="http://java.sun.com/jsf/facelets"
-xmlns:h="http://java.sun.com/jsf/html"
-xmlns:f="http://java.sun.com/jsf/core"
-xmlns:p="http://primefaces.org/ui">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<ui:define name="Titulo">Gerenciamento de Clientes</ui:define>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<ui:define name="Titulo">Gerenciamento de Clientes</ui:define>
 
 
 
-<ui:define name="principal">
-<h1>Gerenciamento de Clientes</h1>
+	<ui:define name="principal">
+		<h1>Gerenciamento de Clientes</h1>
 
-<p:panelGrid id="painelCliente" border="1" columns="2">
-<f:facet name="header">
+		<p:panelGrid id="painelCliente" border="1" columns="2">
+			<f:facet name="header">
 Dados do Cliente
 </f:facet>
 
 
-<h:form>
-<h:inputHidden label="" value="#{clienteBean.cliente.id}"/> <br></br>
+			<h:form>
+			<p:messages id="messages" showDetail="true" autoUpdate="true" />
+				<h:inputHidden label="" value="#{clienteBean.cliente.id}" />
+				<br></br>
 
 
-<label>Nome:</label>
-<p:inputText label="" value="#{clienteBean.cliente.nome}"/> <br></br>
-<label>E-mail:</label>
-<p:inputText value="#{clienteBean.cliente.email}" required="true"/><br></br>
-<label>Telefone:</label>
-<p:inputText value="#{clienteBean.cliente.fone}"/><br></br>
-<br></br>
-<label>Logradouro:</label>
-<p:inputText value="#{clienteBean.cliente.endereco.logradouro}"/><br></br>
-<label>Número:</label>
-<p:inputText value="#{clienteBean.cliente.endereco.numero}" /><br></br>
-<label>Complemento:</label>
-<p:inputText value="#{clienteBean.cliente.endereco.complemento}"/><br></br>
-<label>Bairro:</label>
-<p:inputText value="#{clienteBean.cliente.endereco.bairro}"/><br></br>
-<label>Cidade:</label>
-<p:inputText value="#{clienteBean.cliente.endereco.cidade}"/><br></br>
-<br></br>
-<p:commandButton action="#{clienteBean.salvar}" value="Salvar"/>
-</h:form>
-</p:panelGrid>
+				<label>Nome:</label>
+				<p:inputText label="" value="#{clienteBean.cliente.nome}" />
+				<br></br>
+				<label>E-mail:</label>
+				<p:inputText value="#{clienteBean.cliente.email}" required="true" />
+				<br></br>
+				<label>Telefone:</label>
+				<p:inputText value="#{clienteBean.cliente.fone}" />
+				<br></br>
+				<br></br>
+				<label>Logradouro:</label>
+				<p:inputText value="#{clienteBean.cliente.endereco.logradouro}" />
+				<br></br>
+				<label>Número:</label>
+				<p:inputText value="#{clienteBean.cliente.endereco.numero}" />
+				<br></br>
+				<label>Complemento:</label>
+				<p:inputText value="#{clienteBean.cliente.endereco.complemento}" />
+				<br></br>
+				<label>Bairro:</label>
+				<p:inputText value="#{clienteBean.cliente.endereco.bairro}" />
+				<br></br>
+				<label>Cidade:</label>
+				<p:inputText value="#{clienteBean.cliente.endereco.cidade}" />
+				<br></br>
+				<br></br>
+				<p:commandButton action="#{clienteBean.salvar}" value="Salvar" />
+			</h:form>
+		</p:panelGrid>
 
 
-<h:form>
-    <p:dataTable var="cli" value="#{clienteBean.lista}">
-         <p:column headerText="Id" filterBy = "#{cli.id}">
-           <h:outputText value="#{cli.id}"/>
-        </p:column>
-        
-        <p:column headerText="Nome" filterBy = "#{cli.nome}">
-            <p:commandLink action="#{clienteBean.exibir(cli)}" value="#{cli.nome}"  ajax="false"/>
-        </p:column>
- 
-        <p:column headerText="e-mail">
-            <h:outputText value="#{cli.email}" />
-        </p:column>
- 
-        <p:column headerText="Telefone">
-            <h:outputText value="#{cli.fone}" />
-        </p:column>
- <p:column headerText="Excluir">
- <p:commandLink action="#{clienteBean.remover(cli)}"><img src="imagens/lixo.png" /></p:commandLink>
+		<h:form>
+			<p:dataTable var="cli" value="#{clienteBean.lista}">
+				<p:column headerText="Id" filterBy="#{cli.id}">
+					<h:outputText value="#{cli.id}" />
+				</p:column>
 
- </p:column>
-       </p:dataTable>
-</h:form>
+				<p:column headerText="Nome" filterBy="#{cli.nome}">
+					<p:commandLink action="#{clienteBean.exibir(cli)}"
+						value="#{cli.nome}" ajax="false" />
+				</p:column>
+
+				<p:column headerText="e-mail">
+					<h:outputText value="#{cli.email}" />
+				</p:column>
+
+				<p:column headerText="Telefone">
+					<h:outputText value="#{cli.fone}" />
+				</p:column>
+				<p:column headerText="Excluir">
+					<p:commandLink action="#{clienteBean.remover(cli)}">
+						<img src="imagens/lixo.png" />
+					</p:commandLink>
+
+				</p:column>
+			</p:dataTable>
+		</h:form>
 
 
-</ui:define>
+	</ui:define>
 
 </ui:composition>

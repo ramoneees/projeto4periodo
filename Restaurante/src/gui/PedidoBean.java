@@ -3,9 +3,11 @@ package gui;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import basicas.ItemCardapio;
 import basicas.ItemCardapioPedido;
@@ -105,7 +107,10 @@ public class PedidoBean {
 
 			itensLista = fachada.consultarTodosItem();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(e.getMessage()));
+
+
 			e.printStackTrace();
 		}
 		return itensLista;
@@ -166,13 +171,17 @@ public class PedidoBean {
 			itensPedidos.add(itemcardPedido);
 
 			for (int i = 0; i < itensPedidos.size(); i++) {
-				valorTotal = valorTotal + itensPedidos.get(i).getItem().getPreco() * itensPedidos.get(i).getQtd();
+				valorTotal = valorTotal + (itensPedidos.get(i).getItem().getPreco() * itensPedidos.get(i).getQtd());
 			}
 			item = new ItemCardapio();
 			itemcardPedido = new ItemCardapioPedido();
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(e.getMessage()));
+
+
 			e.printStackTrace();
 		}
 
@@ -228,8 +237,9 @@ public class PedidoBean {
 			//itensPedidos = new ArrayList<ItemCardapioPedido>();
 			return "encerrar_pedido.xhtml";
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			 FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_ERROR,null,e.getMessage()));
+					e.printStackTrace();
 		}
 		return null;
 		} 

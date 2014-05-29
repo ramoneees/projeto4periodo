@@ -3,8 +3,10 @@ package gui;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
 
 import basicas.Mesa;
 import basicas.Restaurante;
@@ -49,7 +51,9 @@ public class MesaBean {
 			 listaRest = fachada.consultarTodosRestaurante();
 			 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			 FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_ERROR,null,e.getMessage()));
+				
 			e.printStackTrace();
 		}
 		return listaRest;
@@ -109,7 +113,9 @@ public class MesaBean {
 			}
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			 FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_ERROR,null,e.getMessage()));
+				
 			mensagem = e.getMessage();
 			e.printStackTrace();
 		}

@@ -13,6 +13,7 @@
 	<ui:define name="principal">
 
 		<h:form>
+		<p:messages id="messages" showDetail="true" autoUpdate="true" />
 			<p:outputLabel for="selectMesa">Selecione a mesa para o pedido</p:outputLabel>
 			<p:selectOneMenu id="selectMesa" value="#{pedidoBean.mesaId}">
 				<f:selectItem noSelectionOption="true"
