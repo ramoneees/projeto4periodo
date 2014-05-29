@@ -2,10 +2,10 @@ package gui;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-
-
+import javax.faces.context.FacesContext;
 
 import dados.TipoPesquisaString;
 
@@ -22,7 +22,7 @@ public class ClienteBean {
 	private List<Cliente> lista;
 	private String nome;
 	private TipoPesquisaString tipoPesquisa;
-	
+
 	@ManagedProperty("#{loginBean.usuarioLogado}")
 	private Usuario usuarioLogado;
 
@@ -37,7 +37,7 @@ public class ClienteBean {
 	public ClienteBean() {
 		this.lista = null;
 	}
-	
+
 	public TipoPesquisaString getTipoPesquisa() {
 		return tipoPesquisa;
 	}
@@ -76,7 +76,6 @@ public class ClienteBean {
 		try {
 			if (cliente.getId() == 0) {
 
-				
 				cliente.setUsuario(usuarioLogado);
 
 				fachada.inserir(cliente);
@@ -88,8 +87,10 @@ public class ClienteBean {
 			}
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, null, e
+							.getMessage()));
 		}
 
 		return "manter_cliente.xhtml?faces-redirect=true";
@@ -107,11 +108,13 @@ public class ClienteBean {
 		try {
 			fachada.remover(c);
 		} catch (Exception e) {
-			e.printStackTrace();
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, null, e
+							.getMessage()));
 		}
 		return "manter_cliente.xhtml?faces-redirect=true";
 	}
-	
 
 	public String getNome() {
 		return nome;
@@ -120,6 +123,5 @@ public class ClienteBean {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
 
 }

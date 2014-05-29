@@ -59,16 +59,12 @@ public class LoginBean {
 			return "home.xhtml?faces-redirect=true";
 		} catch (LoginInvalidoException e) {
 		
-			 FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage("Login/Senha Incorretos"));
+			 //mensagem = e.getMessage();
+		/*	 FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Login/Senha Incorretos"));*/
 
 			 FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro!","Login/Senha Incorretos"));
-			 
-			 mensagem = "Login/Senha Incorretos";
-
-			 
-			 mensagem = e.getMessage();
+					new FacesMessage(FacesMessage.SEVERITY_ERROR,null,e.getMessage()));
 			 
 			 System.out.println(mensagem);
 		}

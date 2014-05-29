@@ -20,7 +20,7 @@ public class UsuarioDAO extends DAO.DAOGenerico<Usuario> implements IUsuarioDAO 
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println("Login/senha não existe");
-			throw new LoginInvalidoException();
+			throw new LoginInvalidoException("Login/senha não existe");
 		}
 	
 	

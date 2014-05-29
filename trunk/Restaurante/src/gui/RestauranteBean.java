@@ -2,8 +2,10 @@ package gui;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
 
 import basicas.Restaurante;
 import basicas.Usuario;
@@ -16,10 +18,9 @@ public class RestauranteBean {
 	private IFachada fachada = new Fachada();
 	private Restaurante restaurante = new Restaurante();
 	private List<Restaurante> lista;
-	
+
 	@ManagedProperty("#{loginBean.usuarioLogado}")
 	private Usuario usuarioLogado;
-
 
 	public Usuario getUsuarioLogado() {
 		return usuarioLogado;
@@ -72,6 +73,11 @@ public class RestauranteBean {
 			}
 
 		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, null, e
+							.getMessage()));
+
 			mensagem = e.getMessage();
 		}
 		return "manter_restaurantes.xhtml?faces-redirect=true";
@@ -84,13 +90,20 @@ public class RestauranteBean {
 		return "manter_restaurantes.xhtml?faces-redirect=true";
 
 	}
-	public String remover(Restaurante r ){
+
+	public String remover(Restaurante r) {
 		try {
 			fachada.remover(r);
 		} catch (Exception e) {
+
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, null, e
+							.getMessage()));
+
 			e.printStackTrace();
 		}
-		return  "manter_restaurantes.xhtml?faces-redirect=true";
-	} 
+		return "manter_restaurantes.xhtml?faces-redirect=true";
+	}
 
 }
