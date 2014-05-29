@@ -11,12 +11,12 @@
 
 	<ui:define name="principal">
 		<h:form>
-			<p:messages id="messages" showDetail="true" autoUpdate="true" />
+			<p:messages id="messages" autoUpdate="true" />
 			<h:inputHidden value="#{mesaBean.mesa.id}" />
 			<br />
 			<br />
 			<label>N° de lugares na mesa:</label>
-			<p:inputText value="#{mesaBean.mesa.qtd}" label="QtdMax" />
+			<p:inputText value="#{mesaBean.mesa.qtd}" label="QtdMax" required="true" requiredMessage="Insira o limite de pessoas na mesa" />
 			<br />
 			<br />
 			<p:selectOneMenu value="#{mesaBean.restauranteId}">
@@ -30,7 +30,6 @@
 				ajax="false" />
 
 		</h:form>
-
 
 		<h:form>
 			<p:dataTable var="mesa" value="#{mesaBean.lista}">

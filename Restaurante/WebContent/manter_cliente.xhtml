@@ -21,38 +21,38 @@ Dados do Cliente
 
 
 			<h:form>
-			<p:messages id="messages" showDetail="true" autoUpdate="true" />
+			<p:messages id="messages" autoUpdate="true" />
 				<h:inputHidden label="" value="#{clienteBean.cliente.id}" />
 				<br></br>
 
 
 				<label>Nome:</label>
-				<p:inputText label="" value="#{clienteBean.cliente.nome}" />
+				<p:inputText label="" value="#{clienteBean.cliente.nome}" required="true" requiredMessage="Insira o Nome do CLiente"/>
 				<br></br>
 				<label>E-mail:</label>
-				<p:inputText value="#{clienteBean.cliente.email}" required="true" />
+				<p:inputText value="#{clienteBean.cliente.email}" required="true" requiredMessage="Insira o E-mail do CLiente" />
 				<br></br>
 				<label>Telefone:</label>
-				<p:inputText value="#{clienteBean.cliente.fone}" />
+				<p:inputText value="#{clienteBean.cliente.fone}" required="true" requiredMessage="Insira o Telefone do CLiente" />
 				<br></br>
 				<br></br>
 				<label>Logradouro:</label>
-				<p:inputText value="#{clienteBean.cliente.endereco.logradouro}" />
+				<p:inputText value="#{clienteBean.cliente.endereco.logradouro}" required="true" requiredMessage="Insira o Logradouro do CLiente" />
 				<br></br>
 				<label>Número:</label>
-				<p:inputText value="#{clienteBean.cliente.endereco.numero}" />
+				<p:inputText value="#{clienteBean.cliente.endereco.numero}" required="true" requiredMessage="Insira o Numero do logradouro do CLiente" />
 				<br></br>
 				<label>Complemento:</label>
-				<p:inputText value="#{clienteBean.cliente.endereco.complemento}" />
+				<p:inputText value="#{clienteBean.cliente.endereco.complemento}"  />
 				<br></br>
 				<label>Bairro:</label>
-				<p:inputText value="#{clienteBean.cliente.endereco.bairro}" />
+				<p:inputText value="#{clienteBean.cliente.endereco.bairro}" required="true" requiredMessage="Insira o Bairro do CLiente" />
 				<br></br>
 				<label>Cidade:</label>
-				<p:inputText value="#{clienteBean.cliente.endereco.cidade}" />
+				<p:inputText value="#{clienteBean.cliente.endereco.cidade}" required="true" requiredMessage="Insira o E-mail do CLiente" />
 				<br></br>
 				<br></br>
-				<p:commandButton action="#{clienteBean.salvar}" value="Salvar" />
+				<p:commandButton action="#{clienteBean.salvar}" value="Salvar"  />
 			</h:form>
 		</p:panelGrid>
 
