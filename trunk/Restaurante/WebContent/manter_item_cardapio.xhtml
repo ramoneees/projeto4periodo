@@ -16,25 +16,29 @@ Dados do Item
 </f:facet>
 
 			<h:form>
-				<p:messages id="messages" showDetail="true" autoUpdate="true" />
+				<p:messages id="messages" autoUpdate="true" />
 				<h:inputHidden value="#{itemCardapioBean.item.id}" />
 				<label>Titulo:</label>
-				<p:inputText value="#{itemCardapioBean.item.titulo}" />
+				<p:inputText value="#{itemCardapioBean.item.titulo}" required="true"
+					requiredMessage="Insira o Titulo do Item" />
 				<br />
 				<br />
 
 				<label>Composição:</label>
-				<p:inputText value="#{itemCardapioBean.item.composicao}" />
+				<p:inputText value="#{itemCardapioBean.item.composicao}"
+					required="true" requiredMessage="Insira a composição do item" />
 				<br />
 				<br />
 
 				<label>Tamanho:</label>
-				<p:inputText value="#{itemCardapioBean.item.tamanho}" />
+				<p:inputText value="#{itemCardapioBean.item.tamanho}"
+					required="true" requiredMessage="Insira  o tamanho do item" />
 				<br />
 				<br />
 
 				<label>Preço:</label>
-				<p:inputText value="#{itemCardapioBean.item.preco}" />
+				<p:inputText value="#{itemCardapioBean.item.preco}" required="true"
+					requiredMessage="Insira o preço do item" />
 				<br />
 				<br />
 

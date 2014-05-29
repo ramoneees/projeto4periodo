@@ -16,19 +16,23 @@ Dados do Restaurante
 </f:facet>
 
 			<h:form>
-				<p:messages id="messages" showDetail="true" autoUpdate="true" />
+				<p:messages id="messages" autoUpdate="true" />
 				<h:inputHidden value="#{restauranteBean.restaurante.id}" />
 				<label>Nome:</label>
-				<p:inputText value="#{restauranteBean.restaurante.nome}"></p:inputText>
+				<p:inputText value="#{restauranteBean.restaurante.nome}"
+					required="true" requiredMessage="Insira o nome do restaurante"></p:inputText>
 				<br></br>
 
 				<label>Telefone:</label>
-				<p:inputText value="#{restauranteBean.restaurante.fone}"></p:inputText>
+				<p:inputText value="#{restauranteBean.restaurante.fone}"
+					required="true" requiredMessage="Insira o fone do restaurante"></p:inputText>
 				<br></br>
 				<br></br>
 
 				<label>Qtd Máx. de Pessoas:</label>
-				<p:inputText value="#{restauranteBean.restaurante.qtdMaxima}"></p:inputText>
+				<p:inputText value="#{restauranteBean.restaurante.qtdMaxima}"
+					required="true"
+					requiredMessage="Insira a quantidade máxima de pessoas no restaurante"></p:inputText>
 				<br></br>
 				<br></br>
 
@@ -41,11 +45,14 @@ Dados do Restaurante
 
 				<label>Logradouro:</label>
 				<p:inputText
-					value="#{restauranteBean.restaurante.endereco.logradouro}" />
+					value="#{restauranteBean.restaurante.endereco.logradouro}"
+					required="true" requiredMessage="Insira o lograduro do restaurante" />
 				<br></br>
 
 				<label>Número:</label>
-				<p:inputText value="#{restauranteBean.restaurante.endereco.numero}" />
+				<p:inputText value="#{restauranteBean.restaurante.endereco.numero}"
+					required="true"
+					requiredMessage="Insira o numero do logradouro do restaurante" />
 				<br></br>
 
 				<label>Complemento:</label>
@@ -54,11 +61,13 @@ Dados do Restaurante
 				<br></br>
 
 				<label>Bairro:</label>
-				<p:inputText value="#{restauranteBean.restaurante.endereco.bairro}" />
+				<p:inputText value="#{restauranteBean.restaurante.endereco.bairro}"
+					required="true" requiredMessage="Insira o bairro do restaurante" />
 				<br></br>
 
 				<label>Cidade:</label>
-				<p:inputText value="#{restauranteBean.restaurante.endereco.cidade}" />
+				<p:inputText value="#{restauranteBean.restaurante.endereco.cidade}"
+					required="true" requiredMessage="Insira a cidade do restaurante" />
 				<br></br>
 				<br></br>
 

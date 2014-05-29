@@ -89,8 +89,7 @@ public class ClienteBean {
 		} catch (Exception e) {
 			FacesContext.getCurrentInstance().addMessage(
 					null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, null, e
-							.getMessage()));
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, null, e.getMessage()));
 		}
 
 		return "manter_cliente.xhtml?faces-redirect=true";
