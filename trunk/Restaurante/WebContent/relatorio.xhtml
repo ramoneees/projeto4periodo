@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="templates/template.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo"></ui:define>
+
+	<ui:define name="principal">
+
+	<p:dataTable var="relat" value="#{itemCardapioPedidoBean.listaRelatorio}">
+         
+         <p:column headerText="Titulo" filterBy = "#{relat.titulo}">
+           <h:outputText value="#{relat.titulo}"/>
+        </p:column>
+        
+        <p:column headerText="Qtd" filterBy = "#{relat.qtd}">
+           <h:outputText value="#{relat.qtd}"/>
+        </p:column>
+        
+    </p:dataTable>
+
+
+	</ui:define>
+
+</ui:composition>

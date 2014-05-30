@@ -5,7 +5,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.NamedQuery;
 
 
-
 @Entity 
 public class ItemCardapio extends Base{
 

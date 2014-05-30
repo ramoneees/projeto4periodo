@@ -17,6 +17,7 @@ import basicas.ItemCardapio;
 import basicas.ItemCardapioPedido;
 import basicas.Mesa;
 import basicas.Pedido;
+import basicas.Relatorio;
 import basicas.Restaurante;
 import basicas.StatusPedido;
 import basicas.Usuario;
@@ -254,6 +255,12 @@ public class Fachada implements IFachada {
 	public void encerrarPedido(Pedido p) {
 		pedidoNegocio.encerrarPedido(p);
 		
+	}
+
+	@Override
+	public List<Relatorio> pesquisarItensMaisVendidos()
+			throws Exception {
+		return itemPedido.pesquisarItensMaisVendidos();
 	}
 
 	

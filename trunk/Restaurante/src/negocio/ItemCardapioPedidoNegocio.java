@@ -2,10 +2,10 @@ package negocio;
 
 import java.util.List;
 
+import basicas.ItemCardapioPedido;
+import basicas.Relatorio;
 import dados.IItemCardapioPedidoDao;
 import dados.ItemCardapioPedidoDAO;
-import basicas.ItemCardapio;
-import basicas.ItemCardapioPedido;
 
 public class ItemCardapioPedidoNegocio {
 
@@ -30,6 +30,13 @@ public class ItemCardapioPedidoNegocio {
 			throws Exception {
 
 		return dao.consultaritemPedido(idPedido);
+
+	}
+	
+	public List<Relatorio> pesquisarItensMaisVendidos()
+			throws Exception {
+
+		return dao.pesquisarItensMaisVendidos();
 
 	}
 }

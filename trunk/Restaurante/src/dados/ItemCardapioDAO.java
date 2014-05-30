@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.TypedQuery;
 
 import basicas.ItemCardapio;
+import basicas.Relatorio;
 
 public class ItemCardapioDAO extends DAO.DAOGenerico<ItemCardapio> implements IItemCardapioDAO{
 
@@ -18,5 +19,7 @@ public class ItemCardapioDAO extends DAO.DAOGenerico<ItemCardapio> implements II
 		}
 		return tq.getResultList();
 	}
+
+	
 
 }
