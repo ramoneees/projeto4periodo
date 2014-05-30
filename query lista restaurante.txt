@@ -1,0 +1,2 @@
+
+select it.titulo, it.preco, m.id p.id  from itemcardapio it left join  

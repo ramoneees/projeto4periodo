@@ -9,6 +9,7 @@ import basicas.ItemCardapio;
 import basicas.ItemCardapioPedido;
 import basicas.Mesa;
 import basicas.Pedido;
+import basicas.Relatorio;
 import basicas.Restaurante;
 import basicas.StatusPedido;
 import basicas.Usuario;
@@ -90,4 +91,7 @@ public interface IFachada {
 	public List<ItemCardapioPedido> consultaritemPedido(int idPedido) throws Exception;
 
 	public void encerrarPedido(Pedido p );
+	
+	public List<Relatorio> pesquisarItensMaisVendidos() throws Exception;
+
 }

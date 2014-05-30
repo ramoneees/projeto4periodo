@@ -8,4 +8,6 @@ import basicas.ItemCardapio;
 public interface IItemCardapioDAO extends IDAOGenerico<ItemCardapio>{
 
 	public List<ItemCardapio> pesquisarItemsPorTitulo(String nome, TipoPesquisaString tipoPesquisa);
+	
+	
 }

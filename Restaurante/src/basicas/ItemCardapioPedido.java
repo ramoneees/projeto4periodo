@@ -2,11 +2,19 @@ package basicas;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 @Entity
 
-@NamedQuery(name="consultarItensPedido", query = "Select i from ItemCardapioPedido i where i.pedido.id = :id")
+@NamedQueries({
+	@NamedQuery(name="pesquisarItensMaisVendidos", query = "Select new basicas.Relatorio(i.item.titulo, SUM(i.qtd)) from  ItemCardapioPedido i group by i.item.titulo order by SUM(i.qtd) desc"),
+
+	@NamedQuery(name="consultarItensPedido", query = "Select i from ItemCardapioPedido i where i.pedido.id = :id")
+
+})
+
+
 public class ItemCardapioPedido extends Base {
 
 	@ManyToOne
