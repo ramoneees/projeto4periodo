@@ -25,7 +25,7 @@
 				</p:column>
 
 			</p:dataTable>
-			<h:outputText value="Valor Total: #{pedidoBean.valorTotal}" />
+			<h:outputText value="Valor Total: #{pedidoBean.pedido.valorTotal}" />
 			<p:commandButton value="Finalizar" action="#{pedidoBean.finalizar}" />
 
 		</h:form>
