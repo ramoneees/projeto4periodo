@@ -7,6 +7,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -22,6 +23,7 @@ public class Pedido extends Base{
 	@ManyToOne
 	private Mesa mesa;
 	
+
 	public Mesa getMesa() {
 		return mesa;
 	}

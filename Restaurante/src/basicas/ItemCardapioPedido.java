@@ -8,7 +8,7 @@ import javax.persistence.NamedQuery;
 @Entity
 
 @NamedQueries({
-	@NamedQuery(name="pesquisarItensMaisVendidos", query = "Select new basicas.Relatorio(i.item.titulo, SUM(i.qtd)) from  ItemCardapioPedido i group by i.item.titulo order by SUM(i.qtd) desc"),
+	@NamedQuery(name="pesquisarItensMaisVendidos", query = "Select new basicas.Relatorio(i.item.titulo, SUM(i.qtd)) from  ItemCardapioPedido i where i.pedido.status = 'FECHADO' group by i.item.titulo order by SUM(i.qtd) desc"),
 
 	@NamedQuery(name="consultarItensPedido", query = "Select i from ItemCardapioPedido i where i.pedido.id = :id")
 

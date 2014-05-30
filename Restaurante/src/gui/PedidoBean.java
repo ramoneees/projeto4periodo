@@ -1,6 +1,7 @@
 package gui;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -29,12 +30,11 @@ public class PedidoBean {
 	private ItemCardapio item = new ItemCardapio();
 	private IFachada fachada = new Fachada();
 	private List<Mesa> listaMesa = new ArrayList<Mesa>();
-	private List<ItemCardapioPedido> itensPedidos =  new ArrayList<ItemCardapioPedido>();
+	private List<ItemCardapioPedido> itensPedidos = new ArrayList<ItemCardapioPedido>();
 	private Mesa mesa = new Mesa();
 	private Integer mesaId;
 	private int idItem;
-	float valorTotal;
-	
+
 	@ManagedProperty("#{loginBean.usuarioLogado}")
 	private Usuario usuarioLogado;
 	private ItemCardapioPedido itemcardPedido = new ItemCardapioPedido();
@@ -110,7 +110,6 @@ public class PedidoBean {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(e.getMessage()));
 
-
 			e.printStackTrace();
 		}
 		return itensLista;
@@ -152,14 +151,7 @@ public class PedidoBean {
 		this.idItem = idItem;
 	}
 
-	public float getValorTotal() {
-		return valorTotal;
-	}
-
-	public void setValorTotal(float valorTotal) {
-		this.valorTotal = valorTotal;
-	}
-
+	
 	public String adicionarItens() {
 		try {
 			// mesa = fachada.consultarPorMesaId(mesaId);
@@ -169,10 +161,16 @@ public class PedidoBean {
 			itemcardPedido.setPedido(pedido);
 			fachada.inserir(itemcardPedido);
 			itensPedidos.add(itemcardPedido);
-
-			for (int i = 0; i < itensPedidos.size(); i++) {
-				valorTotal = valorTotal + (itensPedidos.get(i).getItem().getPreco() * itensPedidos.get(i).getQtd());
-			}
+			
+//			valorTotal = pedido.getValorTotal();
+//
+//			valorTotal = valorTotal + (item.getPreco() * itemcardPedido.getQtd()); 
+//					
+//				/*	(itensPedidos.get(i).getItem().getPreco() * itensPedidos
+//							.get(i).getQtd());
+//		*/
+//			
+			
 			item = new ItemCardapio();
 			itemcardPedido = new ItemCardapioPedido();
 
@@ -180,7 +178,6 @@ public class PedidoBean {
 
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(e.getMessage()));
-
 
 			e.printStackTrace();
 		}
@@ -195,26 +192,32 @@ public class PedidoBean {
 
 			// pedido = fachada.pesquisarPedidoAbertoPorMesa(mesaId);
 			// pedido.setMesa(fachada.consultarPorMesaId(mesaId));
-			pedido = fachada.consultarPedidoAbertoporMesa(mesaId, status.ABERTO);
+			pedido = fachada
+					.consultarPedidoAbertoporMesa(mesaId, status.ABERTO);
 
 			if (pedido == null) {
 
 				mesa = fachada.consultarPorMesaId(mesaId);
+
 				pedido = new Pedido();
 				pedido.setUsuario(usuarioLogado);
 				pedido.setStatus(status.ABERTO);
 				pedido.setMesa(mesa);
 				fachada.inserir(pedido);
+				return "efetuar_pedido.xhtml";
 			} else {
 
-				itensPedidos =  fachada.consultaritemPedido(pedido.getId());
+				itensPedidos = fachada.consultaritemPedido(pedido.getId());
+				return "efetuar_pedido.xhtml";
 			}
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, null, e.getMessage()));
 			e.printStackTrace();
 		}
-		return "efetuar_pedido.xhtml";
+		return null;
 
 	}
 
@@ -228,28 +231,35 @@ public class PedidoBean {
 
 	public String encerrarPedido() {
 
+		float valorTotal = 0;
 		try {
+			
+			for (int i = 0; i < itensPedidos.size(); i++) {
+				valorTotal += itensPedidos.get(i).getQtd() * itensPedidos.get(i).getItem().getPreco();
+			}
 
 			pedido.setUsuario(usuarioLogado);
 			pedido.setStatus(status.FECHADO);
 			pedido.setValorTotal(valorTotal);
-			fachada.encerrarPedido(pedido);;
-			//itensPedidos = new ArrayList<ItemCardapioPedido>();
+			fachada.encerrarPedido(pedido);
+			
+			
+			// itensPedidos = new ArrayList<ItemCardapioPedido>();
 			return "encerrar_pedido.xhtml";
 		} catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null,
-						new FacesMessage(FacesMessage.SEVERITY_ERROR,null,e.getMessage()));
-					e.printStackTrace();
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, null, e
+							.getMessage()));
+			e.printStackTrace();
 		}
 		return null;
-		} 
-	
-	public String finalizar(){
-		
+	}
+
+	public String finalizar() {
+
 		itensPedidos = new ArrayList<ItemCardapioPedido>();
-		return"home.xhtml";
-	
-		
+		return "home.xhtml";
 
 	}
 }

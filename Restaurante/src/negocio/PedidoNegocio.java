@@ -11,6 +11,10 @@ public class PedidoNegocio {
 	
 	public void inserir(Pedido pedido) throws Exception{
 		
+		if (pedido.getMesa() == null) {
+			throw new Exception("Escolha a mesa!");
+		}
+		
 		dao.inserir(pedido);
 	}
 	
