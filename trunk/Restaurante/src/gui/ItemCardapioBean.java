@@ -96,8 +96,9 @@ public class ItemCardapioBean {
 
 	public String exibir(ItemCardapio i) {
 
-		setItem(i);
+		this.item = i;
 		return null;
 	}
+	
 
 }
